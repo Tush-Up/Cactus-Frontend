@@ -1,11 +1,7 @@
-import './App.css';
+import React from "react";
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <div className="text-3xl font-bold underline">Cactus Insurance</div>;
 }
 
 export default App;

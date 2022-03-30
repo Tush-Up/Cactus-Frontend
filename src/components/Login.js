@@ -11,21 +11,20 @@ const Login = () => {
         password: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string().required("Email is required"),
+        email: Yup.string()
+          .required("Email is required")
+          .email("Invalid email"),
         password: Yup.string()
           .required("Password is required")
           .min(7, "Password is too short"),
       })}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
+        console.log(values);
         actions.resetForm();
       }}
     >
       {(formik) => (
-        <VStack
-          as="form"
-          onSubmit={formik.handleSubmit}
-        >
+        <VStack as="form" onSubmit={formik.handleSubmit}>
           <Heading as="h1" size="lg">
             Log in to your account
           </Heading>

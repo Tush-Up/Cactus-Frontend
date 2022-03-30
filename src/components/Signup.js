@@ -6,7 +6,7 @@ import {
   Heading,
   VStack,
   FormErrorMessage,
-  Text
+  Text,
 } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
@@ -28,23 +28,29 @@ const Signup = () => {
         name: Yup.string()
           .required("Name is required")
           .min(6, "Name is too short"),
-        email: Yup.string().required("Email is required"),
-        phone: Yup.string()
+        email: Yup.string()
+          .required("Email is required")
+          .email("Invalid email"),
+        phone: Yup.number()
           .required("Phone number is required")
-          .min(8, "Number is too short"),
+          .integer()
+          .min(8, "Number is too short")
+          .typeError("Please enter a valid phone number"),
         bank: Yup.string().required("Bank is required"),
-        accountNumber: Yup.string()
+        accountNumber: Yup.number()
+          .integer()
           .required("Account number is required")
-          .min(10, "Number is too short"),
+          .min(10, "Account number is too short"),
         password: Yup.string()
           .required("Password is required")
-          .min(7, "Password is too short"),
+          .min(7, "Password must contain atleast 8 characters"),
         confirmPassword: Yup.string()
           .required("Password is required")
-          .min(7, "Password is too short"),
+          .min(7, "Password must contain atleast 8 characters")
+          .oneOf([Yup.ref("password"), null], "Passwords do not match"),
       })}
       onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
+        console.log(values);
         actions.resetForm();
       }}
     >

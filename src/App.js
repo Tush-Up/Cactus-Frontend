@@ -1,5 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
 //Pages
 import About from "./pages/About";
 import Auth from "./pages/Auth";

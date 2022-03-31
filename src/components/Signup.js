@@ -1,25 +1,18 @@
-import {
-  Select,
-  Button,
-  FormControl,
-  FormLabel,
-  Heading,
-  VStack,
-  FormErrorMessage,
-  Text
-} from "@chakra-ui/react";
+import { Button, Heading, VStack, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
+import axios from "../api/axios";
 
-const Signup = () => {
+const Signup = ({ setSuccessMsg, setErrorMsg }) => {
+  const REGISTER_URL = "/register";
   return (
     <Formik
       initialValues={{
         name: "",
         email: "",
         phone: "",
-        bank: "",
+        bankName: "",
         accountNumber: "",
         password: "",
         confirmPassword: "",
@@ -28,23 +21,61 @@ const Signup = () => {
         name: Yup.string()
           .required("Name is required")
           .min(6, "Name is too short"),
-        email: Yup.string().required("Email is required"),
-        phone: Yup.string()
+        email: Yup.string()
+          .required("Email is required")
+          .email("Invalid email"),
+        phone: Yup.number()
           .required("Phone number is required")
-          .min(8, "Number is too short"),
-        bank: Yup.string().required("Bank is required"),
-        accountNumber: Yup.string()
+          .integer()
+          .min(8, "Number is too short")
+          .typeError("Please enter a valid phone number"),
+        bankName: Yup.string().required("Bank is required"),
+        accountNumber: Yup.number()
+          .integer()
           .required("Account number is required")
-          .min(10, "Number is too short"),
+          .min(9, "Account number is too short"),
         password: Yup.string()
           .required("Password is required")
-          .min(7, "Password is too short"),
+          .min(8, "Password must contain atleast 8 characters"),
         confirmPassword: Yup.string()
           .required("Password is required")
-          .min(7, "Password is too short"),
+          .min(8, "Password must contain atleast 8 characters")
+          .oneOf([Yup.ref("password"), null], "Passwords do not match"),
       })}
-      onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, actions) => {
+        delete values.confirmPassword;
+
+        const data = {
+          ...values,
+          phone: values.phone.toString(),
+          accountNumber: values.accountNumber.toString(),
+        };
+        console.log(data);
+
+        try {
+          const response = await axios.post(REGISTER_URL, data, {
+            headers: { "Content-Type": "application/json" },
+          });
+
+          console.log(response.data);
+          setSuccessMsg(
+            "Email verification sent! Please verify your email to complete registration."
+          );
+          setTimeout(() => {
+            setSuccessMsg("");
+          }, 7000);
+        } catch (error) {
+          if (
+            error.response
+          ) {
+            setErrorMsg(error.response.data);
+            setTimeout(() => {
+              setErrorMsg("");
+            }, 7000);
+          }
+          }
+          
+
         actions.resetForm();
       }}
     >
@@ -74,22 +105,31 @@ const Signup = () => {
             label="Phone Number"
             name="phone"
             type="number"
-            placeholder="Phone Number"
+            placeholder="enter phone number"
           />
 
-          <FormControl isInvalid={formik.errors.bank && formik.touched.bank}>
+          <InputField
+            label="Bank Name"
+            name="bankName"
+            type="text"
+            placeholder="enter bank name"
+          />
+
+          {/* <FormControl
+            isInvalid={formik.errors.bankName && formik.touched.bankName}
+          >
             <FormLabel>Bank Name</FormLabel>
             <Select
-              name="bank"
+              name="bankName"
               placeholder="Select bank"
-              {...formik.getFieldProps("bank")}
+              {...formik.getFieldProps("bankName")}
             >
               <option value="option1">Kuda</option>
               <option value="option2">First Bank</option>
               <option value="option3">Union Bank</option>
             </Select>
-            <FormErrorMessage>{formik.errors.bank}</FormErrorMessage>
-          </FormControl>
+            <FormErrorMessage>{formik.errors.bankName}</FormErrorMessage>
+          </FormControl> */}
 
           <InputField
             label="Account Number"

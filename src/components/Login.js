@@ -1,9 +1,22 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { Button, Heading, VStack, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
+import axios from "../api/axios";
 
-const Login = () => {
+const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
+  const LOGIN_URL = "/signIn";
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const getUser = localStorage.getItem("cactusUser");
+    console.log(getUser?.isLogin);
+    if (getUser?.isLogin) {
+      navigate("/dashboard");
+    }
+  }, [navigate]);
   return (
     <Formik
       initialValues={{
@@ -11,21 +24,47 @@ const Login = () => {
         password: "",
       }}
       validationSchema={Yup.object({
-        email: Yup.string().required("Email is required"),
+        email: Yup.string()
+          .required("Email is required")
+          .email("Invalid email"),
         password: Yup.string()
           .required("Password is required")
-          .min(7, "Password is too short"),
+          .min(8, "Password is too short"),
       })}
-      onSubmit={(values, actions) => {
-        alert(JSON.stringify(values, null, 2));
+      onSubmit={async (values, actions) => {
+        try {
+          const response = await axios.post(LOGIN_URL, values, {
+            headers: { "Content-Type": "application/json" },
+          });
+
+          setSuccessMsg("Successfully logged in!");
+          setTimeout(() => {
+            setSuccessMsg("");
+          }, 3000);
+
+          user = {
+            email: values.email,
+            isLogin: true,
+          };
+
+          localStorage.setItem("cactusUser", JSON.stringify(user));
+
+          setTimeout(() => {
+            navigate("/dashboard");
+          }, 3000);
+        } catch (error) {
+          if (error.response) {
+            setErrorMsg(error.response.data);
+            setTimeout(() => {
+              setErrorMsg("");
+            }, 7000);
+          }
+        }
         actions.resetForm();
       }}
     >
       {(formik) => (
-        <VStack
-          as="form"
-          onSubmit={formik.handleSubmit}
-        >
+        <VStack as="form" onSubmit={formik.handleSubmit}>
           <Heading as="h1" size="lg">
             Log in to your account
           </Heading>

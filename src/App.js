@@ -19,6 +19,7 @@ function App() {
       <Route path="/dashboard" element={ <Dashboard /> } />
       <Route path="/dashboard/claims" element={ <Dashboard /> } />
       <Route path="/dashboard/useraccount" element={ <Dashboard /> } />
+      <Route path="/dashboard/plans" element={ <Dashboard /> } />
       <Route path="/faqs" element={<Faqs />} />
       <Route path="/products" element={<Products />} />
       <Route path="/login" element={<Auth />} />

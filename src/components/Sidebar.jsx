@@ -34,9 +34,9 @@ export default function Sidebar ( { open, setOpen } )
                         </span>
                 </li>
                 </Link>
-                <Link to='/dashboard/claims'>
+                <Link to='/dashboard/plans'>
                     <li
-                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-dark-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/claimss" ? 'bgg' : ''}` }>
+                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-dark-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/plans" ? 'bgg' : ''}` }>
                         <CgBriefcase className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                             Plans
                         </span>

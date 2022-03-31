@@ -4,7 +4,11 @@ module.exports = {
     extend: {
       boxShadow: {
         '3xl': '0px 104px 80px 32px rgba(33, 33, 33, 0.03)',
-      }
+      },
+      colors: {
+        "cactus-dark-brown": "#212121",
+        "light-white": "#ffffff",
+      },
     },
   },
   plugins: [],

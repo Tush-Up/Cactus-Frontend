@@ -1,5 +1,5 @@
 import React from 'react';
-import catcuslogo from '../asserts/catcuslogo.png';
+import cactuslogo from '../assets/cactuslogo.png';
 import { BsArrowLeftCircle, BsGrid, BsWallet2 } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
 import { CgBriefcase } from "react-icons/cg";
@@ -17,7 +17,7 @@ export default function Sidebar ( { open, setOpen } )
                 onClick={ () => setOpen( !open ) }
             />
             <div className="flex gap-x-4 items-center" onClick={ () => navigate( '/dashboard' ) }>
-                <img src={ catcuslogo } alt='logo' className={ `cursor-pointer duration-500 ${ open && "rotate-[360deg]"
+                <img src={ cactuslogo } alt='logo' className={ `cursor-pointer duration-500 ${ open && "rotate-[360deg]"
                     }` } />
                 <h1
                     className={ `text-cactus-dark-brown origin-left font-medium text-2xl duration-200 ${ !open && "scale-0"
@@ -34,9 +34,9 @@ export default function Sidebar ( { open, setOpen } )
                         </span>
                 </li>
                 </Link>
-                <Link to='/dashboard/claims'>
+                <Link to='/dashboard/plans'>
                     <li
-                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-dark-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/claimss" ? 'bgg' : ''}` }>
+                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-dark-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/plans" ? 'bgg' : ''}` }>
                         <CgBriefcase className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                             Plans
                         </span>

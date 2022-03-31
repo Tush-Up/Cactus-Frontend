@@ -3,6 +3,7 @@ import Login from "../components/Login";
 import Signup from "../components/Signup";
 import { Alert, AlertIcon } from "@chakra-ui/react";
 import { useState } from "react";
+import cactusLogo from "../assets/cactuslogo.png";
 
 const Auth = ({ setUser, user }) => {
   const [successMsg, setSuccessMsg] = useState("");
@@ -27,7 +28,14 @@ const Auth = ({ setUser, user }) => {
         </Alert>
       </div>
 
-      <div className="text-2xl font-bold mb-6">Cactus</div>
+      <div className="flex gap-x-4 items-center">
+                <img src={ cactusLogo } alt='logo' className="cursor-pointer"/>
+                <h1
+                    className="text-cactus-dark-brown font-medium text-2xl"
+                >
+                    CACTUS
+                </h1>
+        </div>
       <div className="rounded-3xl shadow-3xl w-auto h-auto p-8">
         {window.location.pathname === "/login" && (
           <Login

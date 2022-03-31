@@ -3,7 +3,7 @@ import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const Plans = () => {
   return (
-    <div className="container">
+    <div className="h-">
       <div className="max-w-7xl m-auto">
          <section id="plan" className="my-24">
            <header className="text-center">
@@ -12,7 +12,7 @@ const Plans = () => {
              Make good deal just for you to take your experience to the next level
              </p>
              <br />
-             <button className="text-lg font-bold rounded-lg bg-gray-900 text-white px-10 py-2  ">Monthly</button>
+             <button className="text-lg font-bold rounded-lg bg-cactus-dark-brown text-white px-10 py-2  ">Monthly</button>
              <button className="text-lg px-3 font-bold text-gray-500">Annual saves 30%</button>
            </header> 
            <div className="flex flex-col mt-10 mx-5 space-y-5 md:space-y-0 md:flex-row md:space-x-5 md:mx-0 justify-between">

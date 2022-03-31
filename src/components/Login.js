@@ -36,7 +36,7 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
           const response = await axios.post(LOGIN_URL, values, {
             headers: { "Content-Type": "application/json" },
           });
-
+          console.log(response.data);
           setSuccessMsg("Successfully logged in!");
           setTimeout(() => {
             setSuccessMsg("");

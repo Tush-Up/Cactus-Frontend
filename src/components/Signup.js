@@ -65,16 +65,13 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             setSuccessMsg("");
           }, 7000);
         } catch (error) {
-          if (
-            error.response
-          ) {
+          if (error.response) {
             setErrorMsg(error.response.data);
             setTimeout(() => {
               setErrorMsg("");
             }, 7000);
           }
-          }
-          
+        }
 
         actions.resetForm();
       }}
@@ -82,15 +79,15 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
       {(formik) => (
         <VStack
           as="form"
-          mx="auto"
-          w={{ base: "90%", md: 500 }}
           justifyContent="center"
           onSubmit={formik.handleSubmit}
         >
-          <Heading as="h1" size="lg">
+          <Heading color="Background.100" as="h1" size="lg">
             Register a free account
           </Heading>
-          <Text fontSize="md">Securely log into your cactus account</Text>
+          <Text pb="20px" color="brand.200" fontSize="md">
+            Securely log into your cactus account
+          </Text>
 
           <InputField label="Full Name" name="name" placeholder="enter name" />
 
@@ -150,13 +147,15 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
+            mb="20px"
           />
 
           <Button
             width="100%"
             type="submit"
             variant="solid"
-            colorScheme="blackAlpha"
+            color="#ffffff"
+            bg="brand.100"
           >
             Register
           </Button>

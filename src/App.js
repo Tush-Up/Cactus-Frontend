@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import VerifyEmail from "./components/VerifyEmail";
 
@@ -30,7 +30,10 @@ function App() {
       <Route path="/products" element={<Products />} />
       <Route path="/login" element={<Auth user={user} setUser={setUser} />} />
       <Route path="/register" element={<Auth />} />
-      <Route path="/users/verify-email/:token" element={<VerifyEmail />} />
+      <Route
+        path="/users/verify-email?token=:token"
+        element={<VerifyEmail />}
+      />
       <Route path="*" element={<Home />} />
     </Routes>
   );

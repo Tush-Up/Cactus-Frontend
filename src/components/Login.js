@@ -65,10 +65,12 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
     >
       {(formik) => (
         <VStack as="form" onSubmit={formik.handleSubmit}>
-          <Heading as="h1" size="lg">
+          <Heading color="Background.100" as="h1" size="lg">
             Log in to your account
           </Heading>
-          <Text fontSize="md">Securely log into your cactus account</Text>
+          <Text pb="20px" color="brand.200" fontSize="md">
+            Securely log into your cactus account
+          </Text>
 
           <InputField
             label="Email Address"
@@ -82,13 +84,15 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
             name="password"
             type="password"
             placeholder="Password"
+            mb="20px"
           />
 
           <Button
             width="100%"
             type="submit"
             variant="solid"
-            colorScheme="blackAlpha"
+            bg="brand.100"
+            color="#ffffff"
           >
             Log In
           </Button>

@@ -36,7 +36,7 @@ const Auth = ({ setUser, user }) => {
                     CACTUS
                 </h1>
         </div>
-      <div className="rounded-3xl shadow-3xl w-auto h-auto p-8">
+      <div className="rounded-3xl shadow-3xl w-full max-w-md h-auto p-8">
         {window.location.pathname === "/login" && (
           <Login
             setUser={setUser}

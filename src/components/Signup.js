@@ -147,6 +147,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
+            mb="20px"
           />
 
           <Button

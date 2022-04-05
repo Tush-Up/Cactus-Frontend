@@ -11,9 +11,15 @@ const VerifyEmail = () => {
   useEffect(() => {
     const verifyEmailUrl = async () => {
       try {
-        const verifyUrl = `/verify-email?token=${param.token}`;
-        const { data } = await axios.get(verifyUrl);
-        console.log(data);
+        const verifyUrl = "/verify-email";
+        const data = {
+          token: param.token,
+        };
+        const response = await axios.post(verifyUrl, data, {
+          headers: { "Content-Type": "application/json" },
+        });
+
+        console.log(response.data);
         setValidUrl(true);
       } catch (error) {
         console.log(error);

@@ -31,10 +31,10 @@ function App() {
       <Route path="/login" element={<Auth user={user} setUser={setUser} />} />
       <Route path="/register" element={<Auth />} />
       <Route
-        path="/users/verify-email?token=:token"
+        path="/users/verify-email/:token"
         element={<VerifyEmail />}
       />
-      <Route path="*" element={<Home />} />
+      {/* <Route path="*" element={<Home />} /> */}
     </Routes>
   );
 }

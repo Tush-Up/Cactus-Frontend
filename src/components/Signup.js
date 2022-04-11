@@ -82,7 +82,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           justifyContent="center"
           onSubmit={formik.handleSubmit}
         >
-          <Heading color="Background.100" as="h1" size="lg">
+          <Heading color="brand.100" as="h1" size="lg">
             Register a free account
           </Heading>
           <Text pb="20px" color="brand.200" fontSize="md">

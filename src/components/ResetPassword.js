@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { Button, Heading, VStack, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";

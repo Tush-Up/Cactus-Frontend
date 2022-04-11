@@ -3,8 +3,3 @@
 @import "tailwindcss/components";
 
 @import "tailwindcss/utilities";
-
-.bgg {
-  background-color: #B38B59;
-  color: white;
-}

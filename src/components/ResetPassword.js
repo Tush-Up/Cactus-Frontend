@@ -1,57 +1,31 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import { Button, Heading, VStack, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
 import axios from "../api/axios";
 
-const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
-  const LOGIN_URL = "/signIn";
-  const navigate = useNavigate();
+const ResetPassword = ({ setSuccessMsg, setErrorMsg }) => {
+  const RESET_URL = "/reset-password";
 
-  useEffect(() => {
-    const getUser = localStorage.getItem("cactusUser");
-    console.log(getUser?.isLogin);
-    if (getUser?.isLogin) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
   return (
     <Formik
       initialValues={{
         email: "",
-        password: "",
       }}
       validationSchema={Yup.object({
         email: Yup.string()
           .required("Email is required")
           .email("Invalid email"),
-        password: Yup.string()
-          .required("Password is required")
-          .min(8, "Password is too short"),
       })}
       onSubmit={async (values, actions) => {
         try {
-          const response = await axios.post(LOGIN_URL, values, {
+          const response = await axios.post(RESET_URL, values, {
             headers: { "Content-Type": "application/json" },
           });
           console.log(response.data);
-          setSuccessMsg("Successfully logged in!");
+          setSuccessMsg("Link to reset password sent to email address!");
           setTimeout(() => {
             setSuccessMsg("");
-          }, 3000);
-
-          user = {
-            email: values.email,
-            isLogin: true,
-          };
-
-          localStorage.setItem("cactusUser", JSON.stringify(user));
-
-          setTimeout(() => {
-            navigate("/dashboard");
           }, 3000);
         } catch (error) {
           if (error.response) {
@@ -67,10 +41,10 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
       {(formik) => (
         <VStack as="form" onSubmit={formik.handleSubmit}>
           <Heading color="brand.100" as="h1" size="lg">
-            Log in to your account
+            Reset Password
           </Heading>
           <Text pb="20px" color="brand.200" fontSize="md">
-            Securely log into your cactus account
+            Enter registered email to reset password
           </Text>
 
           <InputField
@@ -80,14 +54,6 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
             placeholder="enter email"
           />
 
-          <InputField
-            label="Password"
-            name="password"
-            type="password"
-            placeholder="Password"
-            mb="20px"
-          />
-
           <Button
             width="100%"
             type="submit"
@@ -95,19 +61,12 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
             bg="brand.100"
             color="#ffffff"
           >
-            Log In
+            Reset Password
           </Button>
-
-          <p className="text-black pt-5">
-            Don't remember your password?
-            <Link to="/reset-password" className="text-cactus-dark-brown pl-1">
-              Reset Password
-            </Link>
-          </p>
         </VStack>
       )}
     </Formik>
   );
 };
 
-export default Login;
+export default ResetPassword;

@@ -9,6 +9,7 @@ module.exports = {
         "cactus-dark-brown": "#B38B59",
         "black": "#212121",
         "light-white": "#ffffff",
+        "cactus-light-brown": "#B38B59",
       },
       backgroundImage: {
         auth: "url('/src/assets/auth-bg.png')",

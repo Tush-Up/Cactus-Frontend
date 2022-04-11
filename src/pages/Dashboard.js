@@ -12,8 +12,8 @@ const Dashboard = () =>
     <div className="flex overflow-hidden">
       <Sidebar open={open} setOpen={setOpen} />
 
-      <div className="p-7 flex-1 h-screen overflow-y-scroll">
-        {window.location.pathname === "/dashboard" && <DashboardHome />}
+      <div className="flex-1 h-screen overflow-y-scroll">
+        {window.location.pathname === "/dashboard" && <DashboardHome open={open} />}
         {window.location.pathname === "/dashboard/plans" && (
           <Plans />
         )}

@@ -1,7 +1,8 @@
 import React from 'react';
-import cactuslogo from '../assets/cactuslogo.png';
+import cactuslogo from '../assets/cactuslogo.jpg';
 import { BsArrowLeftCircle, BsGrid, BsWallet2 } from 'react-icons/bs';
 import { AiOutlineUser } from 'react-icons/ai';
+import { BiLogOut } from 'react-icons/bi';
 import { CgBriefcase } from "react-icons/cg";
 import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ export default function Sidebar ( { open, setOpen } )
     const navigate = useNavigate();
   
     return (
-        <div className={ `${ open ? 'w-72' : 'w-20' } duration-300 h-screen bg-light-white shadow-xl p-5  pt-8 relative` } >
+        <div className={ `${ open ? 'w-52' : 'w-20' } duration-300 h-screen bg-light-white shadow-xl p-5  pt-8 relative` } >
             <BsArrowLeftCircle className={ `absolute cursor-pointer rounded-full -right-3 top-9 w-7  ${ !open && 'rotate-180' }` } alt="logo"
                 onClick={ () => setOpen( !open ) }
             />
@@ -58,6 +59,13 @@ export default function Sidebar ( { open, setOpen } )
                 </Link>
                
             </ul>
+            <div className="pt-20">
+                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9">
+                    <BiLogOut className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
+                        Logout
+                </span>
+                </button>
+            </div>
         </div>
     )
 }

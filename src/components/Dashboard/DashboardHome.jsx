@@ -16,7 +16,7 @@ export default function DashboardHome({open}) {
             <div className="flex justify-between p-10">
               <div>
                 <h5 className='text-gray-400'>Total Wallet Balance</h5>
-                <p className="text-4xl bold"># 2,000,000</p>
+                <p className="text-4xl bold"># 2,000,000</p>  {/*Here you update the value to the real data */}
               </div>
               <div className='border-r-4 border-cactus-light-brown h-40'></div>
               <div>
@@ -24,21 +24,21 @@ export default function DashboardHome({open}) {
                   <img src={transgreen}  className='h-8' alt='green'/>
                   <div>
                     <h3 className='text-gray-600'>Inflow</h3>
-                    <h4 className='text-xl bold'>#200,000</h4>
+                    <h4 className='text-xl bold'>#200,000</h4> {/*Here you update the value to the real data */ }
                   </div>
                 </div>
                 <div className="flex gap-3  m-4">
                   <img src={ transred } className='h-8' alt='red'/>
                   <div>
                     <h3 className='text-gray-600'>Payout</h3>
-                    <h4 className='text-xl bold'>#500,000</h4>
+                    <h4 className='text-xl bold'>#500,000</h4> {/*Here you update the value to the real data */ }
                   </div>
                 </div>
               </div>
              </div>
           </div>
           <div className="mt-3">
-           <img src={chart}  alt='chart'/>
+            <img src={ chart } alt='chart' /> {/*Here you update the chart to  real chart not image*/ }
           </div>
           <div>
             <h2>Transactions</h2>
@@ -47,7 +47,7 @@ export default function DashboardHome({open}) {
       </div>
 
       <div className={ `shadow-lg ${ open ? 'lg:w-1/3' : 'lg:w-1/2'} p-12` }>
-        <Activity />
+        <Activity /> {/*Here you update the value to the real data */ }
       </div>
     </div>
       

@@ -8,6 +8,7 @@ module.exports = {
       colors: {
         "cactus-dark-brown": "#212121",
         "light-white": "#ffffff",
+        "cactus-light-brown": "#B38B59",
       },
     },
   },

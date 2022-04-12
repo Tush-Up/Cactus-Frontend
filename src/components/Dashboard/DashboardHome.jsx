@@ -46,7 +46,7 @@ export default function DashboardHome({open}) {
         </div>
       </div>
 
-      <div className={ `shadow-lg ${ open ? 'lg:w-1/3' : 'lg:w-1/2'} p-12` }>
+      <div className={ `shadow-lg ${ open ? 'lg:w-1/3' : 'lg:w-1/2'} p-8` }>
         <Activity /> {/*Here you update the value to the real data */ }
       </div>
     </div>

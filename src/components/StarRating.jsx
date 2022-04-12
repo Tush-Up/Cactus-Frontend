@@ -9,7 +9,7 @@ function StarRating ( { onChange } )
         onChange?.( newRating );
     };
     return (
-        <span className="flex text-2xl items-center">
+        <span className="flex text-2xl items-center cursor-pointer">
             { [ 1, 2, 3, 4, 5 ].map( ( value ) => (
                 <Star
                     key={ value }

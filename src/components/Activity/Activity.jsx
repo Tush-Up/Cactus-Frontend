@@ -3,6 +3,11 @@ import Calendar from 'react-calendar';
 import profile from '../../assets/profile.png';
 import { BiBell } from 'react-icons/bi';
 import StarRating from "../StarRating";
+import greenrate from '../../assets/green-rate.png';
+import lightgreenrate from '../../assets/lightgreen-rate.png';
+import averagerate from '../../assets/averagerate.png';
+import averagebelow from '../../assets/averagebelow.png';
+import poorrate from '../../assets/poorrate.png';
 // import spiral from '../../assets/spiral.png';
 
 
@@ -43,25 +48,30 @@ const Activity = () =>
                         <h2 className="font-bold text-3xl">{log} <span className="text-xs text-gray-400">out of 5 stars</span></h2>
                     </div>
                     <div>
-                        <div className='flex items-center justify-between mt-3'>
+                        <div className='flex items-center gap-4 justify-between mt-3'>
                             <h2>Excellent</h2>
+                            <img src={ greenrate } alt='greenrate' />
                             <h3>35</h3>
                         </div>
-                        <div className='flex items-center justify-between mt-3'>
+                        <div className='flex items-center gap-4 justify-between mt-3'>
                             <h2>Good</h2>
+                            <img src={ lightgreenrate } alt='lightgreenrate' />
                             <h3>25</h3>
                         </div>
-                        <div className='flex items-center justify-between mt-3'>
+                        <div className='flex items-center gap-4 justify-between mt-3'>
                             <h2>Average</h2>
+                            <img src={ averagerate } alt='averagerate' />
                             <h3>20</h3>
 
                         </div>
-                        <div className='flex items-center justify-between mt-3'>
+                        <div className='flex items-center gap-4 justify-between mt-3'>
                             <h2>Avg Below</h2>
+                            <img src={ averagebelow } alt='averagebelow' />
                             <h3>15</h3>
                         </div>
-                        <div className='flex items-center justify-between mt-3'>
+                        <div className='flex items-center gap-4 justify-between mt-3'>
                             <h2>Poor</h2>
+                            <img src={ poorrate } alt='poorrate' />
                             <h3>05</h3>
                         </div>
                     </div>

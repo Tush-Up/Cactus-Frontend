@@ -34,6 +34,10 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           .integer()
           .required("Account number is required")
           .min(9, "Account number is too short"),
+        salary: Yup.number()
+          .integer()
+          .required("Salary is required")
+          .min(6, "N100,000 minimum salary required"),
         password: Yup.string()
           .required("Password is required")
           .min(8, "Password must contain atleast 8 characters"),
@@ -49,6 +53,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           ...values,
           phone: values.phone.toString(),
           accountNumber: values.accountNumber.toString(),
+          salary: values.salary.toString(),
         };
         console.log(data);
 
@@ -133,6 +138,13 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             name="accountNumber"
             type="number"
             placeholder="Account number"
+          />
+
+          <InputField
+            label="Salary"
+            name="salary"
+            type="number"
+            placeholder="Salary"
           />
 
           <InputField

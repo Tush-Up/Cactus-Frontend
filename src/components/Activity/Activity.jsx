@@ -1,11 +1,14 @@
-import React from "react";
-// import activity from '../../assets/activity.png';
+import React, {useState} from "react";
+import Calendar from 'react-calendar';
 import profile from '../../assets/profile.png';
 import { BiBell } from 'react-icons/bi';
-import spiral from '../../assets/spiral.png';
+// import spiral from '../../assets/spiral.png';
+
 
 const Activity = () =>
 {
+    const [ date, setDate ] = useState( new Date() )
+        ;
     return (
         <div className="bg-light-white">
             <div>
@@ -20,8 +23,11 @@ const Activity = () =>
                         <BiBell size='40' />
                     </div>
                 </div>
-                <div className="rounded-md shadow-lg z-20 p-8 bg-light-white mt-8">
-                        <h2>Upcoming Payments</h2>
+                <div className="rounded-md shadow-lg z-20 p-3 bg-light-white mt-8">
+                    <h2 className="font-bold text-2xl mb-2">Upcoming Payments</h2>
+                    <div>
+                        <Calendar onChange={setDate} value={ date } />
+                    </div>
                 </div>
                 <div className='border-b-4 border-gray-200 h-10'></div>
                 <div className="rounded-md shadow-lg z-20 p-8 bg-light-white mt-8 mb-10">

@@ -26,16 +26,13 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           .email("Invalid email"),
         phone: Yup.number()
           .required("Phone number is required")
-          .integer()
           .min(8, "Number is too short")
           .typeError("Please enter a valid phone number"),
         bankName: Yup.string().required("Bank is required"),
         accountNumber: Yup.number()
-          .integer()
           .required("Account number is required")
           .min(9, "Account number is too short"),
         salary: Yup.number()
-          .integer()
           .required("Salary is required")
           .min(6, "N100,000 minimum salary required"),
         password: Yup.string()
@@ -159,10 +156,10 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
-            mb="20px"
           />
 
-          <Button
+          <div className="pt-5 w-full">
+            <Button
             width="100%"
             type="submit"
             variant="solid"
@@ -171,6 +168,8 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           >
             Register
           </Button>
+          </div>
+          
         </VStack>
       )}
     </Formik>

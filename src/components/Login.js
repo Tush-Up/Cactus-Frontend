@@ -86,9 +86,9 @@ const Login = ({ setSuccessMsg, setErrorMsg }) => {
             name="password"
             type="password"
             placeholder="Password"
-            mb="20px"
           />
 
+        <div className="w-full pt-5">
           <Button
             width="100%"
             type="submit"
@@ -98,6 +98,8 @@ const Login = ({ setSuccessMsg, setErrorMsg }) => {
           >
             Log In
           </Button>
+        </div>
+          
 
           <p className="text-black pt-5">
             Don't remember your password?

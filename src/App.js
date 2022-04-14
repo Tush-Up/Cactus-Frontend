@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import VerifyEmail from "./components/VerifyEmail";
 import { UserProvider } from "./UserContext"; 
@@ -16,6 +16,7 @@ function App() {
   
   return (
     <UserProvider>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

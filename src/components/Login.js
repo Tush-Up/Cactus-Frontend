@@ -1,19 +1,21 @@
-import { useEffect } from "react";
+import { useEffect, useContext } from "react";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom";
 import { Button, Heading, VStack, Text } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
 import axios from "../api/axios";
+import { userContext } from "../UserContext";
 
-const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
+const Login = ({ setSuccessMsg, setErrorMsg }) => {
+  const [user, setUser] = useContext(userContext);
   const LOGIN_URL = "/signIn";
   const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = localStorage.getItem("cactusUser");
-    console.log(getUser?.isLogin);
-    if (getUser?.isLogin) {
+    if (getUser) {
       navigate("/dashboard");
     }
   }, [navigate]);
@@ -36,22 +38,22 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
           const response = await axios.post(LOGIN_URL, values, {
             headers: { "Content-Type": "application/json" },
           });
-          console.log(response.data);
+          console.log(response.data.user);
+          const userData = response.data.user;
+
+          localStorage.setItem("cactusUser", JSON.stringify(userData));
+
+          setUser((prevUser) => ({ ...prevUser, userData}));
+          console.log(user);
+
           setSuccessMsg("Successfully logged in!");
           setTimeout(() => {
             setSuccessMsg("");
           }, 3000);
 
-          user = {
-            email: values.email,
-            isLogin: true,
-          };
+          
 
-          localStorage.setItem("cactusUser", JSON.stringify(user));
-
-          setTimeout(() => {
-            navigate("/dashboard");
-          }, 3000);
+          navigate("/dashboard");
         } catch (error) {
           if (error.response) {
             setErrorMsg(error.response.data);
@@ -65,7 +67,7 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
     >
       {(formik) => (
         <VStack as="form" onSubmit={formik.handleSubmit}>
-          <Heading color="Background.100" as="h1" size="lg">
+          <Heading color="brand.100" as="h1" size="lg">
             Log in to your account
           </Heading>
           <Text pb="20px" color="brand.200" fontSize="md">
@@ -84,9 +86,9 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
             name="password"
             type="password"
             placeholder="Password"
-            mb="20px"
           />
 
+        <div className="w-full pt-5">
           <Button
             width="100%"
             type="submit"
@@ -96,6 +98,15 @@ const Login = ({ user, setSuccessMsg, setErrorMsg }) => {
           >
             Log In
           </Button>
+        </div>
+          
+
+          <p className="text-black pt-5">
+            Don't remember your password?
+            <Link to="/reset-password" className="text-cactus-dark-brown pl-1">
+              Reset Password
+            </Link>
+          </p>
         </VStack>
       )}
     </Formik>

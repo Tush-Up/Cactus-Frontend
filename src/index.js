@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
+import 'react-calendar/dist/Calendar.css';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
@@ -9,8 +10,9 @@ import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 const theme = extendTheme({
   colors: {
     brand: {
-      100: "#212121",
-      200: "rgba(33, 33, 33, 0.32)"
+      100: "#B38B59",
+      200: "rgba(33, 33, 33, 0.32)",
+      300: "#212121",
     },
   },
 });

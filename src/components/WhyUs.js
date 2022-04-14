@@ -1,17 +1,20 @@
+import { Resilience, Security, Stability, User } from '../svg/icons';
 import WhyUsList from './WhyUsList';
 
 export default function WhyUs() {
 	return (
 		<section className="flex items-start justify-between mt-40">
 			<div>
-				<h3 className="font-semibold text-4xl w-full">
+				<h3 className="font-semibold text-4xl w-full text-[#B38B59]">
 					Why is cactus one of the best<br /> job insurance solutions?
 				</h3>
-				<div className="bg-gray-100 relative top-28 rounded-3xl h-[40rem]">
+				<div className="bg-whyUsPicture scale-[1] relative top-28 rounded-3xl h-[40rem]">
 					<div className="bg-[#ffffff] p-4 rounded-2xl flex items-start relative top-[32rem] left-96 h-20 w-[16rem]">
-						<div className="bg-[gray] rounded-xl w-[2rem] h-[2rem]" />
+						<div className="bg-[#B38B59] text-center rounded-xl w-[45px] p-[10px]">
+							<User />
+						</div>
 						<div className="ml-4">
-							<p className="text-sm">Number of Active users</p>
+							<p className="text-sm text-[#B38B59]">Number of Active users</p>
 							<p className="font-bold text-lg">23,449 users</p>
 						</div>
 					</div>
@@ -23,20 +26,23 @@ export default function WhyUs() {
 					Nigerian employees. One of the things that makes us trustworthy are our<br />
 					core values, stability, resilience, safety and security.
 				</p>
-				<ul className="mt-28">
+				<ul className="mt-36">
 					<WhyUsList
+						icon={<Stability />}
 						header={'Stability'}
 						text="Cactus remains on of the most preferred solutions for job insurance by
 					Nigerian employees. One of the things that makes us trustworthy are our
 					core values, stability, resilience, safety and security."
 					/>
 					<WhyUsList
+						icon={<Resilience />}
 						header={'Resilience'}
 						text="Cactus remains on of the most preferred solutions for job insurance by
 					Nigerian employees. One of the things that makes us trustworthy are our
 					core values, stability, resilience, safety and security."
 					/>
 					<WhyUsList
+						icon={<Security />}
 						header={'Safety and security'}
 						text="Cactus remains on of the most preferred solutions for job insurance by
 					Nigerian employees. One of the things that makes us trustworthy are our

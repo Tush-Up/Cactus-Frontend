@@ -11,34 +11,37 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
-import Logo from "../../assets/brown-black-logo.png";
 
 const Plans = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [percent, setPercent] = useState(null);
+  const [premium, setPremium] = useState(null);
   const salary = 100000;
 
   //Function to calculate premium
   const calcPremium = (num, percent) => {
-    return (num / 100) * percent;
+    const prem = (num / 100) * percent;
+    setPremium(prem);
   };
 
   //Fluterwave payment configuration
   const config = {
     public_key: process.env.REACT_APP_PAYMENT_KEY,
     tx_ref: Date.now(),
-    amount: salary,
+    amount: premium,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
+    redirect_url:
+      "https://tushup-cactus.herokuapp.com/handle-flutterwave-payment",
     customer: {
-      email: "user@gmail.com",
+      email: "okwudirejoy@gmail.com",
       phonenumber: "07064586146",
       name: "Joy Okwudire",
     },
     customizations: {
       title: "Cactus Premium Payment",
       description: "Payment for Cactus Insurance premium",
-      logo: { Logo },
+      logo: "../../assets/cactuslogo.jpg",
     },
   };
 
@@ -118,6 +121,7 @@ const Plans = () => {
                       onClick={() => {
                         onOpen();
                         setPercent(2);
+                        calcPremium(salary, 2);
                       }}
                       className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
@@ -177,6 +181,7 @@ const Plans = () => {
                       onClick={() => {
                         onOpen();
                         setPercent(4);
+                        calcPremium(salary, 4);
                       }}
                       className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
@@ -236,6 +241,7 @@ const Plans = () => {
                       onClick={() => {
                         onOpen();
                         setPercent(6);
+                        calcPremium(salary, 6);
                       }}
                       className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
@@ -262,7 +268,7 @@ const Plans = () => {
               Salary: <span>{salary}</span>
             </h3>
             <h3>
-              Premium: <span>{calcPremium(salary, percent)}</span>
+              Premium: <span>{premium}</span>
             </h3>
           </ModalBody>
 

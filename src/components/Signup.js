@@ -26,14 +26,15 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           .email("Invalid email"),
         phone: Yup.number()
           .required("Phone number is required")
-          .integer()
           .min(8, "Number is too short")
           .typeError("Please enter a valid phone number"),
         bankName: Yup.string().required("Bank is required"),
         accountNumber: Yup.number()
-          .integer()
           .required("Account number is required")
           .min(9, "Account number is too short"),
+        salary: Yup.number()
+          .required("Salary is required")
+          .min(6, "N100,000 minimum salary required"),
         password: Yup.string()
           .required("Password is required")
           .min(8, "Password must contain atleast 8 characters"),
@@ -49,6 +50,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           ...values,
           phone: values.phone.toString(),
           accountNumber: values.accountNumber.toString(),
+          salary: values.salary.toString(),
         };
         console.log(data);
 
@@ -82,7 +84,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           justifyContent="center"
           onSubmit={formik.handleSubmit}
         >
-          <Heading color="Background.100" as="h1" size="lg">
+          <Heading color="brand.100" as="h1" size="lg">
             Register a free account
           </Heading>
           <Text pb="20px" color="brand.200" fontSize="md">
@@ -136,6 +138,13 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            label="Salary"
+            name="salary"
+            type="number"
+            placeholder="Salary"
+          />
+
+          <InputField
             label="Password"
             name="password"
             type="password"
@@ -147,10 +156,10 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
-            mb="20px"
           />
 
-          <Button
+          <div className="pt-5 w-full">
+            <Button
             width="100%"
             type="submit"
             variant="solid"
@@ -159,6 +168,8 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           >
             Register
           </Button>
+          </div>
+          
         </VStack>
       )}
     </Formik>

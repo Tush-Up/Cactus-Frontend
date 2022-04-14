@@ -1,154 +1,296 @@
-import React from 'react'
+import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import {
+  Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
+import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import Logo from "../../assets/brown-black-logo.png";
 
 const Plans = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [percent, setPercent] = useState(null);
+  const salary = 100000;
+
+  //Function to calculate premium
+  const calcPremium = (num, percent) => {
+    return (num / 100) * percent;
+  };
+
+  //Fluterwave payment configuration
+  const config = {
+    public_key: process.env.REACT_APP_PAYMENT_KEY,
+    tx_ref: Date.now(),
+    amount: salary,
+    currency: "NGN",
+    payment_options: "card,mobilemoney,ussd",
+    customer: {
+      email: "user@gmail.com",
+      phonenumber: "07064586146",
+      name: "Joy Okwudire",
+    },
+    customizations: {
+      title: "Cactus Premium Payment",
+      description: "Payment for Cactus Insurance premium",
+      logo: { Logo },
+    },
+  };
+
+  const handleFlutterPayment = useFlutterwave(config);
+
   return (
-    <div className="h-">
-      <div className="max-w-7xl m-auto">
-         <section id="plan" className="my-24">
-           <header className="text-center">
-             <h3 className="text-5xl font-bold mb-5 text-gray-900">Choose Flexible Pricing Plan For Yourself.</h3>
-             <p className="text-xl text-gray-400 mb-2">
-             Make good deal just for you to take your experience to the next level
-             </p>
-             <br />
-             <button className="text-lg font-bold rounded-lg bg-cactus-dark-brown text-white px-10 py-2  ">Monthly</button>
-             <button className="text-lg px-3 font-bold text-gray-500">Annual saves 30%</button>
-           </header> 
-           <div className="flex flex-col mt-10 mx-5 space-y-5 md:space-y-0 md:flex-row md:space-x-5 md:mx-0 justify-between">
-             <div className="flex-1x">
-               <div className="bg-white p-10 rounded-lg shadow-lg">
-                 <div className="flex justify-between items-center">
-                   <div>
-                     <h4 className="text-2xl font-bold  text-gray-900">Plus</h4><br />
-                     <h4 className="ext-2xl font-bold text-gray-900">#200,000/mth</h4> <br />
-                     <p className="ml-3 text-lg text-gray-900">30% off your monthly income</p>
-                   </div>
-                 </div> 
+    <>
+      <div className="px-10 py-10">
+        <div className="max-w-7xl m-auto">
+          <section id="plan" className="">
+            <header className="text-center w-full flex justify-center">
+              <div className="max-w-[700px]">
+                <h3 className="text-5xl font-bold mb-5 text-gray-900">
+                  Choose Flexible Pricing Plan For Yourself.
+                </h3>
+                <p className="text-xl text-gray-400 mb-2">
+                  Make good deal just for you to take your experience to the
+                  next level
+                </p>
+                <br />
+                <button className="text-lg font-bold border-2 border-cactus-brown bg-cactus-brown text-white w-60 py-3 rounded-lg">
+                  Monthly
+                </button>
+                {/* <button className="text-lg px-3 font-bold text-gray-500">
+                Annual saves 30%
+              </button> */}
+              </div>
+            </header>
+            <div className="flex flex-col mt-10 mx-5 space-y-5 md:space-y-0 md:flex-row md:space-x-5 md:mx-0 justify-between">
+              <div className="flex-1x">
+                <div className="bg-white p-10 rounded-lg shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-2xl font-bold  text-gray-900">
+                        Lite
+                      </h4>
+                      <br />
+                      <h4 className="text-lg font-bold text-gray-900">
+                        2% of monthly income
+                      </h4>
+                    </div>
+                  </div>
 
-                 <hr className="text-gray-100 mt-5" />
-                 {/* start list section */}
-                 <div className="mt-10">
-                   <ul  className="space-y-4">
-                     <li className="flex items-center">
-                       <div className="">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">View job vacancies</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className=" ">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Get paid 75% off your investment  in the platform</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className="">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Hiring Companies sees your resume</span>
-                     </li>
-                   </ul>
-                 </div>
-                 {/* end of list section */}
-                 <div className="mt-10">
-                   <button className=" text-lg  bg-white border-2 border-black text-black hover:bg-black hover:text-white w-60 py-3 rounded-lg">Choose Plan</button>
-                 </div>
+                  <hr className="text-gray-100 mt-5" />
+                  {/* start list section */}
+                  <div className="mt-10">
+                    <ul className="space-y-4">
+                      <li className="flex items-center">
+                        <div className="">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Get paid 40% of your salary in the event of a job loss
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className=" ">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          View job vacancies
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Hiring companies see your resume
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* end of list section */}
+                  <div className="mt-10">
+                    <button
+                      onClick={() => {
+                        onOpen();
+                        setPercent(2);
+                      }}
+                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                    >
+                      Choose Plan
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-               </div>
-             </div>
+              <div className="flex-1x">
+                <div className="bg-white p-10 rounded-lg shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-2xl font-bold  text-gray-900">
+                        Basic
+                      </h4>
+                      <br />
+                      <h4 className="text-lg font-bold text-gray-900">
+                        4% of monthly income
+                      </h4>
+                    </div>
+                  </div>
 
+                  <hr className="text-gray-100 mt-5" />
+                  {/* start list section */}
+                  <div className="mt-10">
+                    <ul className="space-y-4">
+                      <li className="flex items-center">
+                        <div className="">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Get paid 50% of your salary in the event of a job loss
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          View job vacancies
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="rounded-full p-1">
+                          <AiOutlineClose size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Hiring Companies see your resume
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* end of list section */}
+                  <div className="mt-10">
+                    <button
+                      onClick={() => {
+                        onOpen();
+                        setPercent(4);
+                      }}
+                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                    >
+                      Choose Plan
+                    </button>
+                  </div>
+                </div>
+              </div>
 
+              <div className="flex-1x">
+                <div className="bg-white p-10 rounded-lg shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-2xl font-bold  text-gray-900">
+                        Plus
+                      </h4>
+                      <br />
+                      <h4 className="text-lg font-bold text-gray-900">
+                        6% of monthy income
+                      </h4>{" "}
+                    </div>
+                  </div>
 
-             <div className="flex-1x">
-               <div className="bg-white p-10 rounded-lg shadow-lg">
-                 <div className="flex justify-between items-center">
-                   <div>
-                     <h4 className="text-2xl font-bold  text-gray-900">Basic</h4><br />
-                     <h4 className="ext-2xl font-bold text-gray-900">#100,000/mth</h4> <br />
-                     <p className="ml-3 text-lg text-gray-900">30% off your monthly income</p>
-                   </div>
-                 </div> 
-
-                 <hr className="text-gray-100 mt-5" />
-                 {/* start list section */}
-                 <div className="mt-10">
-                   <ul  className="space-y-4">
-                     <li className="flex items-center">
-                       <div className="">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">View job vacancies</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className="">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Get paid 60% off your investment  in the platform</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className="rounded-full p-1">
-                          <AiOutlineClose size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Hiring Companies sees your resume</span>
-                     </li>
-                   </ul>
-                 </div>
-                 {/* end of list section */}
-                 <div className="mt-10">
-                   <button className=" text-lg  bg-white border-2 border-black text-black hover:bg-black hover:text-white  w-60 py-3 rounded-lg">Choose Plan</button>
-                 </div>
-
-               </div>
-             </div>
-
-
-             <div className="flex-1x">
-               <div className="bg-white p-10 rounded-lg shadow-lg">
-                 <div className="flex justify-between items-center">
-                   <div>
-                     <h4 className="text-2xl font-bold  text-gray-900">Lite</h4><br />
-                     <h4 className="ext-2xl font-bold text-gray-900">#40,000/mth</h4> <br />
-                     <p className="ml-3 text-lg text-gray-900">30% off your monthly income</p>
-                   </div>
-                 </div> 
-
-                 <hr className="text-gray-100 mt-5" />
-                 {/* start list section */}
-                 <div className="mt-10">
-                   <ul  className="space-y-4">
-                     <li className="flex items-center">
-                       <div className=" ">
-                         <AiOutlineCheck size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">View job vacancies</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className=" ">
-                         <AiOutlineClose size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Get paid 40% off your investment  in the platform</span>
-                     </li>
-                     <li className="flex items-center">
-                       <div className="">
-                         <AiOutlineClose size="1.5em"/>
-                       </div>
-                       <span className="ml-3 text-xl text-gray-900">Hiring Companies sees your resume</span>
-                     </li>
-                   </ul>
-                 </div>
-                 {/* end of list section */}
-                 <div className="mt-10">
-                   <button className=" text-lg  bg-white border-2 border-black text-black hover:bg-black hover:text-white w-60 py-3 rounded-lg">Choose Plan</button>
-                 </div>
-
-               </div>
-             </div>
-           </div>
-         </section>
+                  <hr className="text-gray-100 mt-5" />
+                  {/* start list section */}
+                  <div className="mt-10">
+                    <ul className="space-y-4">
+                      <li className="flex items-center">
+                        <div className=" ">
+                          <AiOutlineCheck size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Get paid 65% of your salary in the event of a job loss
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className=" ">
+                          <AiOutlineClose size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          View job vacancies
+                        </span>
+                      </li>
+                      <li className="flex items-center">
+                        <div className="">
+                          <AiOutlineClose size="1.5em" />
+                        </div>
+                        <span className="ml-3 text-xl text-gray-900">
+                          Hiring Companies see your resume
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* end of list section */}
+                  <div className="mt-10">
+                    <button
+                      onClick={() => {
+                        onOpen();
+                        setPercent(6);
+                      }}
+                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                    >
+                      Choose Plan
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
       </div>
-    </div>
-  )
-}
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader></ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <h3>
+              <span>{percent}</span>
+              <span>%</span>
+            </h3>
+            <h3>
+              Salary: <span>{salary}</span>
+            </h3>
+            <h3>
+              Premium: <span>{calcPremium(salary, percent)}</span>
+            </h3>
+          </ModalBody>
 
-export default Plans
+          <div className="w-full flex justify-center items-center my-5">
+            <Button
+              onClick={() => {
+                handleFlutterPayment({
+                  callback: (response) => {
+                    console.log(response);
+                    closePaymentModal(); // this will close the modal programmatically
+                  },
+                  onClose: () => {},
+                });
+              }}
+              type="submit"
+              variant="solid"
+              color="#ffffff"
+              bg="brand.100"
+              _hover={{ bg: "#212121" }}
+              mr={3}
+            >
+              Proceed to pay
+            </Button>
+          </div>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
+
+export default Plans;

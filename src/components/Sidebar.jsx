@@ -21,7 +21,7 @@ export default function Sidebar ( { open, setOpen } )
                 <img src={ cactuslogo } alt='logo' className={ `cursor-pointer duration-500 ${ open && "rotate-[360deg]"
                     }` } />
                 <h1
-                    className={ `text-cactus-dark-brown origin-left font-medium text-2xl duration-200 ${ !open && "scale-0"
+                    className={ `text-black origin-left font-medium text-2xl duration-200 ${ !open && "scale-0"
                         }` }
                 >
                     CACTUS
@@ -29,7 +29,7 @@ export default function Sidebar ( { open, setOpen } )
             </div>
             <ul className="pt-6">
                 <Link to='/dashboard'>
-                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard" ? 'bgg' : ''}` }>
+                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard" ? 'bgg' : ''}` }>
                         <BsGrid className={ `cursor-pointer duration-500` } size='30' />  <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                             Dashboard
                         </span>
@@ -37,21 +37,21 @@ export default function Sidebar ( { open, setOpen } )
                 </Link>
                 <Link to='/dashboard/plans'>
                     <li
-                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/plans" ? 'bgg' : ''}` }>
+                        className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/plans" ? 'bgg' : ''}` }>
                         <CgBriefcase className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                             Plans
                         </span>
                     </li>
                 </Link>
                 <Link to='/dashboard/claims'>
-                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/claims" ? 'bgg' : ''}` }>
+                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/claims" ? 'bgg' : ''}` }>
                     <BsWallet2 className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                         Claims
                     </span>
                     </li>
                 </Link>
                 <Link to='/dashboard/useraccount'>
-                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/useraccount" ? 'bgg' : ''}` }>
+                    <li className={ `flex rounded-md p-2 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 ${ window.location.pathname === "/dashboard/useraccount" ? 'bgg' : ''}` }>
                         <AiOutlineUser className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                             Account
                         </span>
@@ -60,7 +60,7 @@ export default function Sidebar ( { open, setOpen } )
                
             </ul>
             <div className="pt-20">
-                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-light-brown hover:text-white text-cactus-dark-brown text-sm items-center gap-x-4 mt-9">
+                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9">
                     <BiLogOut className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                         Logout
                 </span>

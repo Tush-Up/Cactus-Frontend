@@ -4,7 +4,7 @@ import List from './HomeNavList';
 
 export default function Footer(props) {
 	return (
-		<nav className="flex justify-between items-center text-sm relative top-[3rem]">
+		<nav className="flex justify-between items-center text-sm relative top-[1rem]">
 			<div className="flex w-24 space-x-1 items-center">
 				<Logo />
 				<Cactus />

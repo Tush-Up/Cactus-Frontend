@@ -9,7 +9,7 @@ import axios from "../api/axios";
 import { userContext } from "../UserContext";
 
 const Login = ({ setSuccessMsg, setErrorMsg }) => {
-  const [user, setUser, isLogin, setIsLogin] = useContext(userContext);
+  const [user, setUser] = useContext(userContext);
   const LOGIN_URL = "/signIn";
   const navigate = useNavigate();
 

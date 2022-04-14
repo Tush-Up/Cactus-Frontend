@@ -4,7 +4,7 @@ export default function HomeSub() {
 	return (
 		<section className="relative top-[16rem]">
 			<div className="mx-[24rem] text-justify mb-16">
-				<p className="font-semibold text-4xl mb-8">
+				<p className="font-semibold text-4xl mb-8 text-[#B38B59]">
 					Learn more about<br />our subscription plans.
 				</p>
 				<p className="font-medium text-sm">

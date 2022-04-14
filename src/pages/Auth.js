@@ -13,7 +13,7 @@ const Auth = ({ setUser, user }) => {
 
   return (
     <div
-      className="w-full flex flex-col items-center justify-center py-8 relative bg-cactus-dark-brown"
+      className="w-full flex flex-col items-center justify-center py-8 relative bg-cactus-brown"
       style={{
         minHeight: "100vh",
         height: "auto",

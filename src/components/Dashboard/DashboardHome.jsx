@@ -1,15 +1,17 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Activity from "../Activity/Activity";
 import chart from "../../assets/chart.png";
 import transgreen from "../../assets/Trans-green.png";
 import transred from "../../assets/Trans-red.png";
+import { userContext } from '../../UserContext';
 
 export default function DashboardHome({open}) {
+  const [user, setUser] = useContext(userContext);
   return (
     <div className="container lg:flex p-2">
       <div className={ `${open ? 'lg:w-4/6' :'lg:w-full'}  mr-5` }>
         <div className="bg-white  p-12">
-          <h1 className="text-2xl font-bold">Welcome Back, Name</h1>
+          <h1 className="text-2xl font-bold">Welcome Back, {user?.name}</h1>
         </div>
         <div className="bg-white shadow-md p-12 border-2 border-gray">
           <div className="bg-white z-40 shadow-lg rounded-lg">

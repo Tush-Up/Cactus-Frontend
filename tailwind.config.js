@@ -8,11 +8,6 @@ module.exports = {
 			colors: {
 				'cactus-dark-brown': '#212121',
 				'light-white': '#ffffff'
-			},
-			backgroundImage: {
-				headerPicture: "url('/src/img/HeaderPicture.jpg')",
-				whyUsPicture: "url('/src/img/WhyUs.jpg')",
-				servicePicture: "url('/src/img/Service3.jpg')"
 			}
 		}
 	},

@@ -1,15 +1,22 @@
-export default function ReviewCard({ text, client, job, rating }) {
+export default function ReviewCard({ text, client, job, rating1, rating2, rating3, rating4, rating5, background }) {
 	return (
 		<div className="border-[#000000 border-solid border rounded-3xl p-4 mx-12 -mt-16  w-[22rem] h-[17rem]">
-			<div className="bg-[#212121] rounded-full w-[4rem] h-[4rem] mb-4 -mt-12" />
+			<div className="rounded-full w-[4rem] h-[4rem] mb-4 -mt-12" style={background} />
+
 			<div className="mb-[2rem] text-sm">{text}</div>
 			<hr className="mb-4" />
 			<div className="flex justify-between items-center">
 				<div>
-					<p>{client}</p>
-					<p className="text-sm">{job}</p>
+					<p className="text-[#B38B59] font-DemiBold">{client}</p>
+					<p className="text-[12px] text-gray-500">{job}</p>
 				</div>
-				<div className="">{rating}</div>
+				<ul className="flex items-center">
+					<li>{rating1}</li>
+					<li>{rating2}</li>
+					<li>{rating3}</li>
+					<li>{rating4}</li>
+					<li>{rating5}</li>
+				</ul>
 			</div>
 		</div>
 	);

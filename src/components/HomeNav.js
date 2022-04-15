@@ -30,7 +30,9 @@ export default function HomeNav(props) {
 				</Link>
 			</ul>
 			<Link to="/register">
-				<button className="w-80 h-10 border-solid border-gray-100 bg-gray-100 rounded-lg p-2">Register</button>
+				<button className="w-48 h-10 border-solid border-gray-100 bg-gray-100 rounded-lg p-2 text-[#B38B59]">
+					Register
+				</button>
 			</Link>
 		</nav>
 	);

@@ -287,7 +287,7 @@ const Plans = () => {
               variant="solid"
               color="#ffffff"
               bg="brand.100"
-              _hover={{ bg: "#212121" }}
+              _hover={{ bg: "brand.300" }}
               mr={3}
             >
               Proceed to pay

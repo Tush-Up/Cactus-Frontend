@@ -1,16 +1,13 @@
 import React from "react";
 import Login from "../components/Login";
 import Signup from "../components/Signup";
-import { Alert, AlertIcon } from "@chakra-ui/react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import cactusLogo from "../assets/white-logo.png";
 import ResetPassword from "../components/ResetPassword";
+import Notif from "../components/Notif";
 
-const Auth = ({ setUser, user }) => {
-  const [successMsg, setSuccessMsg] = useState("");
-  const [errorMsg, setErrorMsg] = useState("");
-
+const Auth = (props) => {
+  
   return (
     <div
       className="w-full flex flex-col items-center justify-center py-8 relative bg-auth bg-no-repeat bg-cover bg-center"
@@ -19,19 +16,7 @@ const Auth = ({ setUser, user }) => {
         height: "auto",
       }}
     >
-      <div
-        className={
-          successMsg || errorMsg
-            ? "fixed top-2 right-2 block"
-            : "fixed top-2 right-2 hidden"
-        }
-      >
-        <Alert status={successMsg ? "success" : "error"}>
-          <AlertIcon />
-          {successMsg}
-          {errorMsg}
-        </Alert>
-      </div>
+      <Notif successMsg={props.successMsg} errorMsg={props.errorMsg} />
 
       <Link to="/" className="">
         <img src={cactusLogo} alt="logo" className="cursor-pointer w-[8rem]" />
@@ -39,19 +24,19 @@ const Auth = ({ setUser, user }) => {
       <div className="rounded-3xl shadow-3xl w-full max-w-md h-auto p-8 my-7 bg-white">
         {window.location.pathname === "/login" && (
           <Login
-            setUser={setUser}
-            user={user}
-            setSuccessMsg={setSuccessMsg}
-            setErrorMsg={setErrorMsg}
+            setUser={props.setUser}
+            user={props.user}
+            setSuccessMsg={props.setSuccessMsg}
+            setErrorMsg={props.setErrorMsg}
           />
         )}
         {window.location.pathname === "/register" && (
-          <Signup setSuccessMsg={setSuccessMsg} setErrorMsg={setErrorMsg} />
+          <Signup setSuccessMsg={props.setSuccessMsg} setErrorMsg={props.setErrorMsg} />
         )}
         {window.location.pathname === "/reset-password" && (
           <ResetPassword
-            setSuccessMsg={setSuccessMsg}
-            setErrorMsg={setErrorMsg}
+            setSuccessMsg={props.setSuccessMsg}
+            setErrorMsg={props.setErrorMsg}
           />
         )}
       </div>

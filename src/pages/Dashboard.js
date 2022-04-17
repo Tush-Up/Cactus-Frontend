@@ -4,13 +4,15 @@ import DashboardHome from "../components/Dashboard/DashboardHome";
 import Claims from "../components/Claims/Claims";
 import UserAccount from "../components/UserAccount/UserAccount";
 import Plans from "../components/Plans/Plans";
-import { UserProvider } from "../UserContext";
+import Notif from "../components/Notif";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const [open, setOpen] = useState(true);
   return (
-    <UserProvider>
-      <div className="flex overflow-hidden">
+      <div
+        className="flex overflow-hidden w-full relative"
+      >
+        <Notif successMsg={props.successMsg} errorMsg={props.errorMsg} />
         <Sidebar open={open} setOpen={setOpen} />
 
         <div className="flex-1 h-screen overflow-y-scroll">
@@ -18,13 +20,17 @@ const Dashboard = () => {
             <DashboardHome open={open} />
           )}
           {window.location.pathname === "/dashboard/plans" && <Plans />}
-          {window.location.pathname === "/dashboard/claims" && <Claims />}
+          {window.location.pathname === "/dashboard/claims" && (
+            <Claims
+              setSuccessMsg={props.setSuccessMsg}
+              setErrorMsg={props.setErrorMsg}
+            />
+          )}
           {window.location.pathname === "/dashboard/useraccount" && (
             <UserAccount />
           )}
         </div>
       </div>
-    </UserProvider>
   );
 };
 

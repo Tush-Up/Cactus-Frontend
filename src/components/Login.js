@@ -1,15 +1,15 @@
-import { useEffect, useContext } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { Link } from "react-router-dom";
-import { Button, Heading, VStack, Text } from "@chakra-ui/react";
+import { Button, Heading, VStack, Text, Input } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
 import axios from "../api/axios";
-import { userContext } from "../UserContext";
+import { useAuth } from "../auth-context";
 
 const Login = ({ setSuccessMsg, setErrorMsg }) => {
-  const [user, setUser] = useContext(userContext);
+  const {login, loggedIn, setUser, user} = useAuth();
   const LOGIN_URL = "/signIn";
   const navigate = useNavigate();
 
@@ -38,20 +38,14 @@ const Login = ({ setSuccessMsg, setErrorMsg }) => {
           const response = await axios.post(LOGIN_URL, values, {
             headers: { "Content-Type": "application/json" },
           });
-          console.log(response.data.user);
-          const userData = response.data.user;
+          const token = response.data.token;
 
-          localStorage.setItem("cactusUser", JSON.stringify(userData));
-
-          setUser((prevUser) => ({ ...prevUser, userData}));
-          console.log(user);
+          localStorage.setItem("cactus_token", JSON.stringify(token));
 
           setSuccessMsg("Successfully logged in!");
           setTimeout(() => {
             setSuccessMsg("");
-          }, 3000);
-
-          
+          }, 5000);
 
           navigate("/dashboard");
         } catch (error) {
@@ -75,6 +69,7 @@ const Login = ({ setSuccessMsg, setErrorMsg }) => {
           </Text>
 
           <InputField
+            fieldType={Input}
             label="Email Address"
             name="email"
             type="email"
@@ -82,28 +77,29 @@ const Login = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Password"
             name="password"
             type="password"
             placeholder="Password"
           />
 
-        <div className="w-full pt-5">
-          <Button
-            width="100%"
-            type="submit"
-            variant="solid"
-            bg="brand.100"
-            color="#ffffff"
-          >
-            Log In
-          </Button>
-        </div>
-          
+          <div className="w-full pt-5">
+            <Button
+              width="100%"
+              type="submit"
+              variant="solid"
+              bg="brand.100"
+              color="#ffffff"
+              _hover={{ bg: "brand.300" }}
+            >
+              Log In
+            </Button>
+          </div>
 
           <p className="text-black pt-5">
             Don't remember your password?
-            <Link to="/reset-password" className="text-cactus-dark-brown pl-1">
+            <Link to="/reset-password" className="text-cactus-brown pl-1">
               Reset Password
             </Link>
           </p>

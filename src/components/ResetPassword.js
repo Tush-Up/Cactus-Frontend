@@ -1,4 +1,4 @@
-import { Button, Heading, VStack, Text } from "@chakra-ui/react";
+import { Button, Heading, VStack, Text, Input } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
@@ -48,6 +48,7 @@ const ResetPassword = ({ setSuccessMsg, setErrorMsg }) => {
           </Text>
 
           <InputField
+            fieldType={Input}
             label="Email Address"
             name="email"
             type="email"
@@ -60,6 +61,7 @@ const ResetPassword = ({ setSuccessMsg, setErrorMsg }) => {
             variant="solid"
             bg="brand.100"
             color="#ffffff"
+            _hover={{ bg: "brand.300" }}
           >
             Reset Password
           </Button>

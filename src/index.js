@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
+import { AuthProvider } from "./auth-context";
 
 const theme = extendTheme({
   colors: {
@@ -21,7 +22,9 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ChakraProvider theme={theme}>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </ChakraProvider>
     </BrowserRouter>
   </React.StrictMode>,

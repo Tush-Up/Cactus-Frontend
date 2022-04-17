@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import VerifyEmail from "./components/VerifyEmail";
+import { AuthProvider } from "./auth-context";
 
 //Pages
 import About from "./pages/About";
@@ -16,6 +17,7 @@ function App() {
   const [errorMsg, setErrorMsg] = useState("");
   
   return (
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -72,6 +74,7 @@ function App() {
         <Route path="/users/verify-email/:token" element={<VerifyEmail />} />
         {/* <Route path="*" element={<Home />} /> */}
       </Routes>
+    </AuthProvider>
   );
 }
 

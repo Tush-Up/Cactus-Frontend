@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import chart from "../../assets/chart2.png";
 import list from "../../assets/list.png";
 import { Button, Heading, VStack, Textarea, Input } from "@chakra-ui/react";
@@ -6,17 +6,11 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "../InputField";
 import axios from "../../api/axios";
+import { useAuth } from '../../auth-context';
 
 export default function Claims({ setSuccessMsg, setErrorMsg }) {
   const [formSwitch, setFormSwitch] = useState({page1: true, page2: false});
-  const [authToken, setAuthToken] = useState('');
-
-  useEffect(() => {
-  const token = JSON.parse(localStorage.getItem('cactusUser')).token;
-  if (token) {
-   setAuthToken(token);
-  }
-  }, []);
+  const {token} = useAuth();
   
   const CLAIM_URL = "/claim";
   return (
@@ -74,8 +68,8 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
         console.log(values);
         try {
           const response = await axios.post(CLAIM_URL, values, {
-            headers: { "Content-Type": "application/json" },
-            authToken: authToken,
+            headers: { "Content-Type": "application/json",
+          "auth-token": token, },
           });
 
           console.log(response.data);

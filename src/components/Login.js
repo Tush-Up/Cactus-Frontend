@@ -6,10 +6,10 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
 import axios from "../api/axios";
-import { useAuth } from "../auth-context";
+// import { useAuth } from "../auth-context";
 
 const Login = ({ setSuccessMsg, setErrorMsg }) => {
-  const {login, loggedIn, setUser, user} = useAuth();
+  // const {login, loggedIn, setUser, user} = useAuth();
   const LOGIN_URL = "/signIn";
   const navigate = useNavigate();
 

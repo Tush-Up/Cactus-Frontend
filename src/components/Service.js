@@ -1,4 +1,5 @@
 import { Arrow } from '../svg/icons';
+import servicePicture from '../img/Service3.jpg';
 
 export default function Service() {
 	return (
@@ -18,9 +19,9 @@ export default function Service() {
 					</div>
 				</div>
 
-				<div className="bg-no-repeat bg-servicePicture rounded-3xl w-[765px]" />
+				<img src={servicePicture} alt="" className="bg-no-repeat rounded-3xl w-[755px]" />
 			</section>
-			<hr className="mt-[45rem]" />
+			<hr className="mt-[40rem]" />
 		</div>
 	);
 }

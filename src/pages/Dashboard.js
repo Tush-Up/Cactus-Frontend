@@ -52,7 +52,7 @@ const Dashboard = (props) => {
           />
         )}
         {window.location.pathname === "/dashboard/useraccount" && (
-          <UserAccount />
+          <UserAccount open={ open } setOpen={ setOpen } />
         )}
       </div>
     </div>

@@ -45,7 +45,13 @@ function App() {
             />
           }
         />
-        <Route path="/dashboard/useraccount" element={<Dashboard />} />
+        <Route path="/dashboard/useraccount" element={ <Dashboard /> } >
+          <Route index element={ <Dashboard /> } />
+          <Route path="mywallet" element={ <Dashboard /> } />
+          <Route path="banksettings" element={ <Dashboard /> } />
+          <Route path="contactus" element={ <Dashboard /> } />
+
+        </Route>
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/products" element={<Products />} />
         <Route

@@ -5,13 +5,14 @@ import HomeNav from '../components/HomeNav';
 import HomeSubCard from '../components/HomeSubCard';
 import ReviewHeader from '../components/ReviewHeader';
 import Service from '../components/Service';
+import productsPhoto from '../img/Mask group.png';
 
 const Products = () => {
 	return (
 		<div className="mx-12 mt-4 font-TT Commons">
 			<HomeNav />
 			<HomeHeader
-				photo="/src/img/Mask group.png"
+				photo={productsPhoto}
 				text1="Subscription"
 				text2="plan one."
 				paragraph1="Subscribe to any of our job insurance plans and"

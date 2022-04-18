@@ -1,5 +1,6 @@
 import { Resilience, Security, Stability, User } from '../svg/icons';
 import WhyUsList from './WhyUsList';
+import whyUs from '../img/WhyUs.jpg';
 
 export default function WhyUs() {
 	return (
@@ -8,8 +9,9 @@ export default function WhyUs() {
 				<h3 className="font-semibold text-4xl w-full text-[#B38B59]">
 					Why is cactus one of the best<br /> job insurance solutions?
 				</h3>
-				<div className="bg-whyUsPicture scale-[1] relative top-28 rounded-3xl h-[40rem]">
-					<div className="bg-[#ffffff] p-4 rounded-2xl flex items-start relative top-[32rem] left-96 h-20 w-[16rem]">
+				<div>
+					<img src={whyUs} alt="" className="relative top-28 rounded-3xl h-[40rem]" />
+					<div className="bg-[#ffffff] p-4 rounded-2xl flex items-start relative top-[8px] left-96 h-20 w-[16rem]">
 						<div className="bg-[#B38B59] text-center rounded-xl w-[45px] p-[10px]">
 							<User />
 						</div>

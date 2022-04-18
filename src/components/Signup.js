@@ -1,4 +1,4 @@
-import { Button, Heading, VStack, Text } from "@chakra-ui/react";
+import { Button, Heading, VStack, Text, Input } from "@chakra-ui/react";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import InputField from "./InputField";
@@ -14,6 +14,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
         phone: "",
         bankName: "",
         accountNumber: "",
+        salary: "",
         password: "",
         confirmPassword: "",
       }}
@@ -32,9 +33,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
         accountNumber: Yup.number()
           .required("Account number is required")
           .min(9, "Account number is too short"),
-        salary: Yup.number()
-          .required("Salary is required")
-          .min(6, "N100,000 minimum salary required"),
+        salary: Yup.number().required("Salary is required"),
         password: Yup.string()
           .required("Password is required")
           .min(8, "Password must contain atleast 8 characters"),
@@ -50,7 +49,6 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           ...values,
           phone: values.phone.toString(),
           accountNumber: values.accountNumber.toString(),
-          salary: values.salary.toString(),
         };
         console.log(data);
 
@@ -69,6 +67,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
         } catch (error) {
           if (error.response) {
             setErrorMsg(error.response.data);
+            console.log(error.response.data);
             setTimeout(() => {
               setErrorMsg("");
             }, 7000);
@@ -91,9 +90,15 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
             Securely log into your cactus account
           </Text>
 
-          <InputField label="Full Name" name="name" placeholder="enter name" />
+          <InputField
+            fieldType={Input}
+            label="Full Name"
+            name="name"
+            placeholder="enter name"
+          />
 
           <InputField
+            fieldType={Input}
             label="Email Address"
             name="email"
             type="email"
@@ -101,6 +106,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Phone Number"
             name="phone"
             type="number"
@@ -108,6 +114,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Bank Name"
             name="bankName"
             type="text"
@@ -131,6 +138,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           </FormControl> */}
 
           <InputField
+            fieldType={Input}
             label="Account Number"
             name="accountNumber"
             type="number"
@@ -138,6 +146,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Salary"
             name="salary"
             type="number"
@@ -145,6 +154,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Password"
             name="password"
             type="password"
@@ -152,6 +162,7 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
           />
 
           <InputField
+            fieldType={Input}
             label="Confirm Password"
             name="confirmPassword"
             type="password"
@@ -160,16 +171,16 @@ const Signup = ({ setSuccessMsg, setErrorMsg }) => {
 
           <div className="pt-5 w-full">
             <Button
-            width="100%"
-            type="submit"
-            variant="solid"
-            color="#ffffff"
-            bg="brand.100"
-          >
-            Register
-          </Button>
+              width="100%"
+              type="submit"
+              variant="solid"
+              color="#ffffff"
+              bg="brand.100"
+              _hover={{ bg: "brand.300" }}
+            >
+              Register
+            </Button>
           </div>
-          
         </VStack>
       )}
     </Formik>

@@ -18,7 +18,7 @@ export default function DashboardHome({open}) {
                 <h5 className='text-gray-400'>Total Wallet Balance</h5>
                 <p className="text-4xl bold"># 2,000,000</p>  {/*Here you update the value to the real data */}
               </div>
-              <div className='border-r-4 border-cactus-light-brown h-40'></div>
+              <div className='border-r-4 border  h-40'></div>
               <div>
                 <div className="flex gap-3 m-4">
                   <img src={transgreen}  className='h-8' alt='green'/>

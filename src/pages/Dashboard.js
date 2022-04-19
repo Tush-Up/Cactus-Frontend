@@ -36,7 +36,7 @@ const Dashboard = (props) => {
   }, [setToken, token, navigate, setAuthState]);
 
   return (
-    <div className="flex overflow-hidden w-full relative">
+    <div className="overflow-hidden w-full relative g-flex">
       <Notif successMsg={props.successMsg} errorMsg={props.errorMsg} />
       <Sidebar open={open} setOpen={setOpen} />
 

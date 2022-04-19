@@ -116,3 +116,12 @@ abbr[title] {
     background-color: #B38B59;
     color: white;
 }
+.g-flex {
+    display: flex;
+}
+
+@media screen and (max-width: 1080px){
+    .g-flex {
+        flex-direction: column;
+    }
+}

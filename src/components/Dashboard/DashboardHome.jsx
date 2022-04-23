@@ -3,13 +3,15 @@ import Activity from "../Activity/Activity";
 import chart from "../../assets/chart.png";
 import transgreen from "../../assets/Trans-green.png";
 import transred from "../../assets/Trans-red.png";
+import { useAuth } from "../../auth-context";
 
 export default function DashboardHome({open}) {
+  const { authState } = useAuth();
   return (
     <div className="container lg:flex p-2">
       <div className={ `${open ? 'lg:w-4/6' :'lg:w-full'}  mr-5` }>
         <div className="bg-white  p-12">
-          <h1 className="text-2xl font-bold">Welcome Back, Joy</h1>
+          <h1 className="text-2xl font-bold">Welcome Back, {authState.name} </h1>
         </div>
         <div className="bg-white shadow-md p-12 border-2 border-gray">
           <div className="bg-white z-40 shadow-lg rounded-lg">

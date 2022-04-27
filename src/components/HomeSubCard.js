@@ -2,7 +2,7 @@ import { Arrow } from '../svg/icons';
 
 export default function HomeSubCard({ text, text2, text3, text4 }) {
 	return (
-		<div className="border-[#000000 border-solid border rounded-3xl p-4 mx-4 hover:cursor-pointer hover:border-none">
+		<div className="border-gray-100 border-solid border w-[762px] rounded-3xl p-4 mx-4 hover:cursor-pointer hover:border-none hover:shadow-2xl">
 			<div className="bg-[#ffffff] p-4 rounded-2xl flex items-center mb-6">
 				<div className="bg-gray-100 rounded-full w-[4rem] h-[4rem]" />
 				<div className="ml-4">

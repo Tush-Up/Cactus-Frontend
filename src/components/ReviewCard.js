@@ -1,7 +1,18 @@
-export default function ReviewCard({ text, client, job, rating1, rating2, rating3, rating4, rating5, background }) {
+export default function ReviewCard({
+	photo,
+	text,
+	client,
+	job,
+	rating1,
+	rating2,
+	rating3,
+	rating4,
+	rating5,
+	background
+}) {
 	return (
-		<div className="border-[#000000 border-solid border rounded-3xl p-4 mx-12 -mt-16  w-[22rem] h-[17rem]">
-			<div className="rounded-full w-[4rem] h-[4rem] mb-4 -mt-12" style={background} />
+		<div className="border-gray-100 bg-light-white border-solid border rounded-3xl p-4 mx-12 -mt-16 w-[22rem] h-[17rem] hover:cursor-pointer hover:border-none hover:shadow-2xl">
+			<img src={photo} alt="" className="rounded-full w-[4rem] h-[4rem] mb-4 -mt-12" />
 
 			<div className="mb-[2rem] text-sm">{text}</div>
 			<hr className="mb-4" />

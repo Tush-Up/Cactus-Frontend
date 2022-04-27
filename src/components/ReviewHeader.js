@@ -1,6 +1,6 @@
 export default function ReviewHeader({ text1, text2, text3 }) {
 	return (
-		<header className="mx-[26rem]">
+		<header className="relative left-[30rem] w-3/5">
 			<p className="text-justify font-semibold text-4xl mb-8 text-[#B38B59]">
 				{text1}
 				<br /> {text2}

@@ -21,18 +21,29 @@ const Dashboard = (props) => {
     if (authToken) {
       setToken(authToken);
 
+      // try {
+      //   const response = axios.get(USER_URL, {
+      //     headers: { "Content-Type": "application/json", "auth-token": token },
+      //   });
+      //   setAuthState(response.data);
+      //   console.log(response.data);
+      // } catch (error) {
+      //   if (error.response) {
+      //     console.log(error.response.data);
+      //   }
+      // }
+
       axios
         .get(USER_URL, {
           headers: { "Content-Type": "application/json", "auth-token": token },
         })
         .then((response) => {
-          
+          console.log(response.data);
           setAuthState(response.data);
         });
     } else {
       navigate("/login");
     }
-
   }, [setToken, token, navigate, setAuthState]);
 
   return (
@@ -52,7 +63,7 @@ const Dashboard = (props) => {
           />
         )}
         {window.location.pathname === "/dashboard/useraccount" && (
-          <UserAccount open={ open } setOpen={ setOpen } />
+          <UserAccount open={open} setOpen={setOpen} />
         )}
       </div>
     </div>

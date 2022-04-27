@@ -13,7 +13,7 @@ export default function Partners() {
 				paragraph2="get paid when you lose your job. Get started with a"
 				paragraph3="Cactus subscription today. It’s absolutely free."
 			/>
-			<div className="bg-light-white relative rounded-xl mx-12 my-48 h-16 p-16 flex justify-between items-center">
+			<div className="drop-shadow-2xl bg-light-white relative rounded-xl mx-12 my-[16rem] h-16 p-12 flex justify-between items-center">
 				<Konga />
 				<Line />
 				<Nestle />

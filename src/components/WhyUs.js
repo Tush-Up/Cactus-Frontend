@@ -4,18 +4,18 @@ import whyUs from '../img/WhyUs.jpg';
 
 export default function WhyUs() {
 	return (
-		<section className="flex items-start justify-between mt-40">
+		<section className="flex items-start justify-between mt-32">
 			<div>
 				<h3 className="font-semibold text-4xl w-full text-[#B38B59]">
 					Why is cactus one of the best<br /> job insurance solutions?
 				</h3>
 				<div>
 					<img src={whyUs} alt="" className="relative top-28 rounded-3xl h-[40rem]" />
-					<div className="bg-[#ffffff] p-4 rounded-2xl flex items-start relative top-[8px] left-96 h-20 w-[16rem]">
+					<div className="bg-[#ffffff] p-4 rounded-2xl flex items-start relative top-[8px] left-72 h-20 w-[16rem]">
 						<div className="bg-[#B38B59] text-center rounded-xl w-[45px] p-[10px]">
 							<User />
 						</div>
-						<div className="ml-4">
+						<div className="ml-4 drop-shadow-2xl">
 							<p className="text-sm text-[#B38B59]">Number of Active users</p>
 							<p className="font-bold text-lg">23,449 users</p>
 						</div>

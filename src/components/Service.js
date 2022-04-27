@@ -4,9 +4,9 @@ import servicePicture from '../img/Service3.jpg';
 export default function Service() {
 	return (
 		<div>
-			<section className="flex justify-between relative top-[36rem] h-[790px]">
+			<section className="flex justify-between">
 				<div>
-					<p className="mt-48 w-[16rem] font-semibold text-4xl mb-8 text-[#B38B59]">
+					<p className="mt-32 w-[16rem] font-semibold text-4xl mb-8 text-[#B38B59]">
 						Your safety is our priority.
 					</p>
 					<p className="text-sm w-[25rem]">
@@ -19,9 +19,9 @@ export default function Service() {
 					</div>
 				</div>
 
-				<img src={servicePicture} alt="" className="bg-no-repeat rounded-3xl w-[755px]" />
+				<img src={servicePicture} alt="" className="rounded-3xl w-full" />
 			</section>
-			<hr className="mt-[40rem]" />
+			<hr className="mt-[7rem]" />
 		</div>
 	);
 }

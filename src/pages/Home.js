@@ -9,7 +9,7 @@ import WhyUs from '../components/WhyUs';
 
 const Home = () => {
 	return (
-		<div className="mx-12 mt-4 font-TT Commons">
+		<div className="mx-12 w-auto mt-4 font-TT Commons">
 			<HomeNav />
 			<Partners />
 			<WhyUs />

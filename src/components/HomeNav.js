@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Cactus, Logo } from '../svg/icons';
 import List from './HomeNavList';
 
-export default function HomeNav(props) {
+export default function HomeNav() {
 	return (
 		<nav className="flex justify-between items-center text-sm">
 			<div className="flex w-24 space-x-1 items-center">
@@ -11,7 +11,7 @@ export default function HomeNav(props) {
 			</div>
 			<ul className="flex p-0">
 				<Link to="/">
-					<List title="Home" />
+					<List title="Home" className={`${window.location.pathname === '/' ? 'bgg' : ''}`} />
 				</Link>
 				<Link to="/products">
 					<List title="Our Products" />

@@ -1,9 +1,9 @@
 import React from 'react'
-import changechecker from '../assets/changepassword.png'
-import { useAuth } from '../auth-context';
+// import changechecker from '../assets/changepassword.png'
+// import { useAuth } from '../auth-context';
 
 export default function UserProfile() {
-  const {authState} = useAuth();
+  // const {authState} = useAuth();
   return (
       <div>
           {/* <div className="bg-white  p-12">

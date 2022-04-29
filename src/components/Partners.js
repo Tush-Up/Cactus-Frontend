@@ -1,11 +1,11 @@
 import { Bolt, Konga, Kuda, Line, Nestle, Vconnect } from '../svg/icons';
 // import HomeHeader from './HomeHeader';
-import partnersLogo from '../img/HeaderPicture.jpg';
+// import partnersLogo from '../img/HeaderPicture.jpg';
 
 export default function Partners() {
 	return (
 		<section className="my-12">
-			{/* <HomeHeader
+			{/* <HomeHeader 
 				photo={partnersLogo}
 				text1="Cactus ensures"
 				text2="your stability."

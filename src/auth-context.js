@@ -5,18 +5,7 @@ const AuthContext = createContext();
 const AuthProvider = (props) => {
   const [token, setToken] = useState("");
   const [authState, setAuthState] = useState({
-    accountNumber: "",
-    bankName: "",
-    claim: "",
-    date: "",
-    email: "",
-    isVerified: "",
-    kycverification: "",
-    name: "",
-    phone: "",
-    salary: "",
-    __v: "",
-    _id: "",
+    
   });
 
   const authContextValue = {

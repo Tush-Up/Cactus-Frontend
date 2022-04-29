@@ -19,7 +19,6 @@ export default function UserAccount ( { open, setOpen } ) {
         { window.location.pathname === "/dashboard/useraccount/contactus" && (
           <ContactUs />
         ) }
-
       </div>
       <div className={ `shadow-lg ${ open ? 'lg:w-1/3' : 'lg:w-1/2' } p-8` }>
         <Activity /> {/*Here you update the value to the real data */ }

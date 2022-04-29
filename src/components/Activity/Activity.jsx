@@ -34,7 +34,7 @@ const Activity = () =>
                 </div>
                 <div className="rounded-md shadow-lg z-20 p-3 bg-light-white mt-8">
                     <h2 className="font-bold text-xl mb-2">Upcoming Payments</h2>
-                    <div>
+                    <div className="h-[10rem] overflow-auto">
                         <Calendar onChange={setDate} value={ date } />
                     </div>
                 </div>

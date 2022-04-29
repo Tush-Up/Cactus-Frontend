@@ -9,7 +9,7 @@ export default function UserProfile() {
           {/* <div className="bg-white  p-12">
               <h1 className="text-2xl font-bold">Welcome Back, Joy</h1>
           </div> */}
-      <div className="bg-white shadow-md pt-12 border-2 border-gray">
+      <div className="bg-white shadow-md pt-10 border-y border-gray">
         
         <div>
           <h2 className="font-bold p-2">Change Password</h2>

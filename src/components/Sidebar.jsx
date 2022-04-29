@@ -10,11 +10,13 @@ import {useNavigate} from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import scrollreveal from "scrollreveal";
 import './Sidebar.css';
+import { useAuth } from '../auth-context';
 
 
 export default function Sidebar ( { open, setOpen } )
 {
     const navigate = useNavigate();
+    const {setAuthState} = useAuth();
 
     useEffect( () =>
     {
@@ -37,6 +39,12 @@ export default function Sidebar ( { open, setOpen } )
         );
 
     }, [] );
+
+    const handleLogout = () => {
+        localStorage.removeItem("cactus_token");
+        setAuthState({});
+        navigate("/");
+    }
   
     return (
         <>
@@ -104,7 +112,7 @@ export default function Sidebar ( { open, setOpen } )
                     </ul>
                 </div>
             <div className="pt-20 logout">
-                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 logout">
+                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 logout" onClick={handleLogout} >
                     <BiLogOut className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
                         Logout
                 </span>
@@ -142,6 +150,14 @@ export default function Sidebar ( { open, setOpen } )
                             </span>
                         </li>
                     </Link>
+
+                    <div className="logout">
+                <button className="flex rounded-md p-4 cursor-pointer hover:bg-cactus-brown hover:text-white text-black text-sm items-center gap-x-4 mt-9 logout" onClick={handleLogout} >
+                    <BiLogOut className={ `cursor-pointer duration-500` } size='30' /> <span className={ `${ !open && "hidden" } origin-left duration-200 text-lg` }>
+                        Logout
+                </span>
+                </button>
+            </div>
 
                 </ul>
         </div>

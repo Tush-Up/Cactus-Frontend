@@ -10,19 +10,19 @@ export default function UserNav() {
           <li className="pl-6 pr-6"> Update user profile</li>
         </Link>
         <Link
-          to="/dashboard/useraccount/mywallet"
+          to="/dashboard/mywallet"
           className="text-cactus-brown"
         >
           <li className="pl-6 pr-6">My wallet</li>
         </Link>
         <Link
-          to="/dashboard/useraccount/banksettings"
+          to="/dashboard/banksettings"
           className="text-cactus-brown"
         >
           <li className="pl-6 pr-6">Bank Settings</li>
         </Link>
         <Link
-          to="/dashboard/useraccount/contactus"
+          to="/dashboard/contactus"
           className="text-cactus-brown"
         >
           <li className="pl-6 pr-6">Contact Us</li>

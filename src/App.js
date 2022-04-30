@@ -47,14 +47,14 @@ function App() {
         />
         <Route path="/dashboard/useraccount" element={<Dashboard />} />
         <Route
-          path="/dashboard/useraccount/banksettings"
+          path="/dashboard/banksettings"
           element={<Dashboard />}
         />
         <Route
-          path="/dashboard/useraccount/contactus"
+          path="/dashboard/contactus"
           element={<Dashboard />}
         />
-        <Route path="/dashboard/useraccount/mywallet" element={<Dashboard />} />
+        <Route path="/dashboard/mywallet" element={<Dashboard />} />
 
         <Route path="/faqs" element={<Faqs />} />
         <Route path="/products" element={<Products />} />

@@ -3,11 +3,6 @@ import Calendar from 'react-calendar';
 import profile from '../../assets/profile.png';
 import { BiBell } from 'react-icons/bi';
 import StarRating from "../StarRating";
-import greenrate from '../../assets/green-rate.png';
-import lightgreenrate from '../../assets/lightgreen-rate.png';
-import averagerate from '../../assets/averagerate.png';
-import averagebelow from '../../assets/averagebelow.png';
-import poorrate from '../../assets/poorrate.png';
 import { Progress } from '@chakra-ui/react'
 // import spiral from '../../assets/spiral.png';
 import { useAuth } from "../../auth-context";

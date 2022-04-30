@@ -22,7 +22,7 @@ const Activity = () =>
                         <div className="border-2 border-cactus-brown rounded-full p-1 cursor-pointer">
                             <img src={ profile } alt='profileImage'/>
                         </div>
-                        <h2 className="font-medium text-base">{authState.name.split(" ")[0]}</h2>
+                        <h2 className="font-medium text-base">{authState.name?.split(" ")[0]}</h2>
                     </div>
                     <div className="rounded-full bg-light-white shadow cursor-pointer w-[40px] h-[40px] flex items-center justify-center">
                         <BiBell size='20' />
@@ -46,13 +46,13 @@ const Activity = () =>
                     </div>
                     <div>
                         <div className='grid items-center justify-between grid-cols-3 mt-3'>
-                            <h2 className="col-span-auto" >Excellent</h2>
+                            <h2 className="" >Excellent</h2>
                             <div><Progress value={36} colorScheme='green' size='md' /></div>
                             <h3>36</h3>
                         </div>
                         <div className='grid items-center justify-between grid-cols-3 mt-3'>
                             <h2>Good</h2>
-                            <div><Progress value={25} colorScheme='whatsapp' size='md' /></div>
+                            <div><Progress value={25} colorScheme='teal' size='md' /></div>
                             <h3>25</h3>
                         </div>
                         <div className='grid items-center justify-between grid-cols-3 mt-3'>
@@ -74,15 +74,15 @@ const Activity = () =>
                     </div>
                 </div>
                 <div className="rounded-md shadow z-20 p-2 bg-light-white ">
-                    <div className="rounded-md bg-cactus-light-brown p-5 flex">
+                    <div className="rounded-md bg-cactus-brown p-5 flex">
                         <div>
                             <h2 className="text-white text-base font-medium">Do You Still Need Our Help?</h2>
                             <p className="text-xs text-white">Send your request via email</p>
-                            <a href="https://github.com/">
-                                <button className="bg-light-white rounded-md p-4 mt-2" >
-                                    <h3 className='text-cactus-light-brown font-medium'>Send Request</h3>
-                                </button>
-                            </a>
+                            
+                            <button className="bg-light-white rounded-md p-4 mt-2" >
+                                <h3 className='text-cactus-light-brown font-medium'>Send Request</h3>
+                            </button>
+                            
                         </div>
                         {/* <div className="absolute bg-cactus-light-brown">
                             <img src={ spiral } alt='spiralImage' />

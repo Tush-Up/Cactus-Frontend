@@ -8,7 +8,7 @@ export default function MyWallet() {
     <div>
       <div className="bg-white p-12 border border-gray mx-auto">
         <div className="bg-white shadow-md border-cactus-brown border mb-3 rounded-lg">
-          <div className="md:flex justify-between p-10">
+          <div className="md:flex justify-between gap-4 p-10">
             <div className="flex flex-col items-center">
               <img src={ mastercard } alt="mastercard" className="h-40" />
               <button className="bg-cactus-brown text-white text-center px-20 mt-8 py-2 rounded-lg">Withdraw</button>

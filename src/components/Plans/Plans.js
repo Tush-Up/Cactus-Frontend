@@ -108,7 +108,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           Get paid 40% of your salary in the event of a job loss
                         </span>
                       </li>
@@ -131,7 +131,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl text-gray-900">
+                        <span className="ml-3 text-base text-gray-900">
                           View job vacancies
                         </span>
                       </li>
@@ -154,7 +154,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl text-gray-900">
+                        <span className="ml-3 text-base text-gray-900">
                           Hiring companies see your resume
                         </span>
                       </li>
@@ -213,7 +213,7 @@ const Plans = () => {
                           />
                        </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           Get paid 50% of your salary in the event of a job loss
                         </span>
                       </li>
@@ -236,7 +236,7 @@ const Plans = () => {
                             />
                           </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           View job vacancies
                         </span>
                       </li>
@@ -259,7 +259,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl text-gray-900">
+                        <span className="ml-3 text-base text-gray-900">
                           Hiring Companies see your resume
                         </span>
                       </li>
@@ -318,7 +318,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           Get paid 65% of your salary in the event of a job loss
                         </span>
                       </li>
@@ -341,7 +341,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           View job vacancies
                         </span>
                       </li>
@@ -364,7 +364,7 @@ const Plans = () => {
                                 />
                             </svg>
                         </div>
-                        <span className="ml-3 text-xl font-medium text-gray-900">
+                        <span className="ml-3 text-base font-medium text-gray-900">
                           Hiring Companies see your resume
                         </span>
                       </li>

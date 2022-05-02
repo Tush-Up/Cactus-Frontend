@@ -69,12 +69,12 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
         const data = {
           ...values
         }
-        console.log(data);
         try {
           const response = await axios.post(CLAIM_URL, data, {
             headers: { "Content-Type": "application/json",
           "auth-token": token, },
           });
+          console.log(response.data)
           setSuccessMsg(
             "Claim submitted successfully!"
           );

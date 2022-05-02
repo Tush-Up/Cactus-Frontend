@@ -65,9 +65,13 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
           .email("Invalid email"),
       })}
       onSubmit={async (values, actions) => {
-        console.log(values);
+      
+        const data = {
+          ...values
+        }
+        console.log(data);
         try {
-          const response = await axios.post(CLAIM_URL, values, {
+          const response = await axios.post(CLAIM_URL, data, {
             headers: { "Content-Type": "application/json",
           "auth-token": token, },
           });
@@ -82,6 +86,7 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
         } catch (error) {
           if (error.response) {
             setErrorMsg(error.response.data);
+            console.log(error.response.data);
             setTimeout(() => {
               setErrorMsg("");
             }, 7000);
@@ -136,7 +141,6 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
           <div className="pt-5 w-full flex justify-center" >
             <Button
             width="70%"
-            type="submit"
             variant="solid"
             color="#ffffff"
             bg="brand.100"
@@ -203,8 +207,8 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
           >
             Back
           </Button>
+          
           <Button
-            isLoading={false}
             width="80%"
             type="submit"
              _hover={{ bg: 'brand.300' }}

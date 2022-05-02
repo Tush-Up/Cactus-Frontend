@@ -196,17 +196,12 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
                 
 
           <div className="pt-5 w-full flex">
-            <Button
-            width="20%"
-            variant="solid"
-            color="#ffffff"
-            bg="brand.100"
-            _hover={{ bg: 'brand.300' }}
-            mr="10px"
+            <div className="w-[20%] text-white bg-cactus-brown mr-[10px]"
+            
             onClick={()=>{setFormSwitch({page1: true, page2: false})}}
           >
             Back
-          </Button>
+          </div>
           
           <Button
             width="80%"

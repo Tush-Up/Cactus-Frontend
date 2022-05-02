@@ -83,6 +83,7 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
           setTimeout(() => {
             setSuccessMsg("");
           }, 7000);
+
         } catch (error) {
           if (error.response) {
             setErrorMsg(error.response.data);
@@ -139,16 +140,12 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
                 
 
           <div className="pt-5 w-full flex justify-center" >
-            <Button
-            width="70%"
-            variant="solid"
-            color="#ffffff"
-            bg="brand.100"
-            _hover={{ bg: 'brand.300' }}
+            <div className="w-[80%] py-2 rounded flex items-center justify-center text-white bg-cactus-brown mr-[10px] text-base text-bold cursor-pointer"
+            
             onClick={()=>{setFormSwitch({page1: false, page2: true})}}
           >
             Next
-          </Button>
+          </div>
           </div>
         </div>
 
@@ -196,7 +193,7 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
                 
 
           <div className="pt-5 w-full flex">
-            <div className="w-[20%] text-white bg-cactus-brown mr-[10px]"
+            <div className="w-[20%] py-2 rounded flex items-center justify-center text-white bg-cactus-brown mr-[10px] text-base text-bold cursor-pointer"
             
             onClick={()=>{setFormSwitch({page1: true, page2: false})}}
           >
@@ -206,10 +203,12 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
           <Button
             width="80%"
             type="submit"
-             _hover={{ bg: 'brand.300' }}
+             _hover={{ bg: 'brand.100', color: '#ffffff' }}
             variant="solid"
-            color="#ffffff"
-            bg="brand.100"
+            color="brand.100"
+            bg="#ffffff"
+            border='2px'
+            borderColor="brand.100"
           >
             Make Claim
           </Button>

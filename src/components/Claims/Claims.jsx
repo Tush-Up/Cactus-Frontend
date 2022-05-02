@@ -75,8 +75,6 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
             headers: { "Content-Type": "application/json",
           "auth-token": token, },
           });
-
-          console.log(response.data);
           setSuccessMsg(
             "Claim submitted successfully!"
           );
@@ -87,7 +85,6 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
         } catch (error) {
           if (error.response) {
             setErrorMsg(error.response.data);
-            console.log(error.response.data);
             setTimeout(() => {
               setErrorMsg("");
             }, 7000);

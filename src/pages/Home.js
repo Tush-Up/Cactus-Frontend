@@ -12,7 +12,7 @@ const Home = () => {
 	const [ state, setState ] = useState(false);
 	const onClick = () => setState(!state);
 	return (
-		<div className="mx-12 w-auto mt-4 font-TT Commons">
+		<div className="mx-12 w-auto mt-4 overflow-hidden">
 			<HomeNav onClick={onClick} />
 			{state && <Productmenu />}
 			<Partners />

@@ -3,8 +3,7 @@ import Calendar from 'react-calendar';
 import profile from '../../assets/profile.png';
 import { BiBell } from 'react-icons/bi';
 import StarRating from "../StarRating";
-import { Progress } from '@chakra-ui/react'
-// import spiral from '../../assets/spiral.png';
+import { Progress } from '@chakra-ui/react';
 import { useAuth } from "../../auth-context";
 
 

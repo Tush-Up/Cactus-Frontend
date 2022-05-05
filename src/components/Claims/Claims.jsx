@@ -14,9 +14,9 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
   
   const CLAIM_URL = "/claim";
   return (
-    <div className="container md:flex px-5 pt-3 mb-10">
-      <div className= "md:w-3/6 mr-[2rem]">
-      <div className="bg-white shadow-lg p-6 border-2 border-gray">
+    <div className="md:flex px-5 pt-3 mb-10">
+      <div className= "md:w-3/6 md:mr-[2rem]">
+      <div className="bg-white shadow p-6 border border-gray">
         <div className='mb-5'>
           <h1 className="font-medium">Claims Overview</h1>
         </div>
@@ -30,7 +30,7 @@ export default function Claims({ setSuccessMsg, setErrorMsg }) {
       </div>
 
       <div className=" md:w-3/6 flex justify-center" >
-      <div className="bg-white shadow-lg p-6 border-2 border-gray w-full max-w-[450px]">
+      <div className="bg-white shadow p-6 border border-gray w-full max-w-[450px]">
         <Formik
       initialValues={{
         previousPosition: "",

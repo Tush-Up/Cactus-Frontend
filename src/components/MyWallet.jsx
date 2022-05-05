@@ -17,7 +17,7 @@ export default function MyWallet() {
                     <p className="font-bold text-2xl"> <span className="pr-3">₦</span>0.00</p>
                   </div>
                   <div>
-                      {/* Hello Chizzy, Here will be replaced with diffrent card images, I guess that should work dynamically */}
+                      {/* Hello Chizzy, Here will be replaced with different card images, I guess that should work dynamically */}
                   </div>
                 </div>
                 <div className="flex justify-between">

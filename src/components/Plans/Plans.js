@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import {
   Button,
   useDisclosure,
@@ -11,11 +10,15 @@ import {
   ModalCloseButton,
 } from "@chakra-ui/react";
 import { useFlutterwave, closePaymentModal } from "flutterwave-react-v3";
+import { useAuth } from "../../auth-context";
+import Logo from "../../assets/brown-black-logo.png";
 
 const Plans = () => {
+  const { authState } = useAuth();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [percent, setPercent] = useState(null);
   const [premium, setPremium] = useState(null);
+  const [plan, setPlan] = useState("");
   const salary = 100000;
 
   //Function to calculate premium
@@ -31,17 +34,16 @@ const Plans = () => {
     amount: premium,
     currency: "NGN",
     payment_options: "card,mobilemoney,ussd",
-    redirect_url:
-      "https://tushup-cactus.herokuapp.com/handle-flutterwave-payment",
+    redirect_url: "https://tushup-cactus.herokuapp.com/handle-flutterwave-payment",
     customer: {
-      email: "okwudirejoy@gmail.com",
-      phonenumber: "07064586146",
-      name: "Joy Okwudire",
+      email: authState?.email,
+      phonenumber: authState?.phone,
+      name: authState?.name,
     },
     customizations: {
-      title: "Cactus Premium Payment",
-      description: "Payment for Cactus Insurance premium",
-      logo: "../../assets/cactuslogo.jpg",
+      title: "Cactus Insurance Premium Payment",
+      description: `Payment for Cactus Insurance ${plan} premium plan`,
+      logo: Logo,
     },
   };
 
@@ -54,15 +56,12 @@ const Plans = () => {
           <section id="plan" className="">
             <header className="text-center w-full flex justify-center">
               <div className="max-w-[700px]">
-                <h3 className="text-5xl font-bold mb-5 text-gray-900">
-                  Choose Flexible Pricing Plan For Yourself.
-                </h3>
-                <p className="text-xl text-gray-400 mb-2">
-                  Make good deal just for you to take your experience to the
-                  next level
+                <h3 className="text-3xl font-bold mb-5 text-black">Choose Flexible Premium Plan For Yourself</h3>
+                <p className="text-xl text-cactus-gray mb-2">
+                  Make good deal just for you to take your experience to the next level
                 </p>
                 <br />
-                <button className="text-lg font-bold border-2 border-cactus-brown bg-cactus-brown text-white w-60 py-3 rounded-lg">
+                <button className="text-lg font-medium bg-cactus-brown text-white px-10 py-3 rounded-lg">
                   Monthly
                 </button>
                 {/* <button className="text-lg px-3 font-bold text-gray-500">
@@ -71,21 +70,17 @@ const Plans = () => {
               </div>
             </header>
             <div className="flex flex-col mt-10 mx-5 space-y-5 md:space-y-0 md:flex-row md:space-x-5 md:mx-0 justify-between">
-              <div className="flex-1x hover:lg:w-custom hover:mb-10 hover:lg:px-4 hover:py-10 hover:text-center">
-                <div className="bg-white p-10 rounded-lg shadow-lg">
+              <div className="flex-1x">
+                <div className="bg-white p-10 rounded-lg shadow">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-2xl font-bold  text-gray-900">
-                        Lite
-                      </h4>
-                      <br />
-                      <h4 className="text-lg font-bold text-gray-900">
-                        2% of monthly income
-                      </h4>
+                      <h4 className="text-xl font-bold  text-black mb-3">Lite</h4>
+
+                      <h4 className="text-base font-medium text-black">Premium: 2% of monthly income</h4>
                     </div>
                   </div>
 
-                  <hr className="text-gray-100 mt-5" />
+                  <hr className="mt-5" />
                   {/* start list section */}
                   <div className="mt-10">
                     <ul className="space-y-4">
@@ -93,20 +88,15 @@ const Plans = () => {
                         <div className="bg-[#30D158] rounded-full p-1">
                           {/* <AiOutlineCheck size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                         <span className="ml-3 text-base font-medium text-gray-900">
                           Get paid 40% of your salary in the event of a job loss
@@ -116,47 +106,33 @@ const Plans = () => {
                         <div className=" bg-[#c4c4c4] rounded-full p-1">
                           {/* <AiOutlineCheck size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
-                        <span className="ml-3 text-base text-gray-900">
-                          View job vacancies
-                        </span>
+                        <span className="ml-3 text-base text-gray-900">View job vacancies</span>
                       </li>
                       <li className="flex items-center">
                         <div className="bg-[#c4c4c4] rounded-full p-1">
                           {/* <AiOutlineCheck size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
-                        <span className="ml-3 text-base text-gray-900">
-                          Hiring companies see your resume
-                        </span>
+                        <span className="ml-3 text-base text-gray-900">Hiring companies see your resume</span>
                       </li>
                     </ul>
                   </div>
@@ -167,8 +143,9 @@ const Plans = () => {
                         onOpen();
                         setPercent(2);
                         calcPremium(salary, 2);
+                        setPlan("Lite");
                       }}
-                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                      className="text-lg font-medium bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
                       Choose Plan
                     </button>
@@ -176,17 +153,13 @@ const Plans = () => {
                 </div>
               </div>
 
-              <div className="flex-1x hover:lg:w-custom hover:mb-10 hover:lg:px-4 hover:py-10 hover:text-center">
-                <div className="bg-white p-10 rounded-lg shadow-lg">
+              <div className="flex-1x hover:mb-5">
+                <div className="bg-white p-10 rounded-lg shadow">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-2xl font-bold  text-gray-900">
-                        Basic
-                      </h4>
-                      <br />
-                      <h4 className="text-lg font-bold text-gray-900">
-                        4% of monthly income
-                      </h4>
+                      <h4 className="text-xl font-bold  text-black mb-3">Basic</h4>
+
+                      <h4 className="text-base font-medium text-black">Premium: 4% of monthly income</h4>
                     </div>
                   </div>
 
@@ -205,13 +178,8 @@ const Plans = () => {
                             stroke="currentColor"
                             aria-hidden="true"
                           >
-                           <path
-                           stroke-linecap="round"
-                           stroke-linejoin="round"
-                           stroke-width="2"
-                           d="M5 13l4 4L19 7"
-                          />
-                       </svg>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                         <span className="ml-3 text-base font-medium text-gray-900">
                           Get paid 50% of your salary in the event of a job loss
@@ -228,40 +196,26 @@ const Plans = () => {
                             stroke="currentColor"
                             aria-hidden="true"
                           >
-                            <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M5 13l4 4L19 7"
-                            />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                           </svg>
                         </div>
-                        <span className="ml-3 text-base font-medium text-gray-900">
-                          View job vacancies
-                        </span>
+                        <span className="ml-3 text-base font-medium text-gray-900">View job vacancies</span>
                       </li>
                       <li className="flex items-center">
                         <div className="bg-[#c4c4c4] rounded-full p-1">
                           {/* <AiOutlineClose size="1.5em" /> */}
-                              <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                          <svg
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
-                        <span className="ml-3 text-base text-gray-900">
-                          Hiring Companies see your resume
-                        </span>
+                        <span className="ml-3 text-base text-gray-900">Hiring Companies see your resume</span>
                       </li>
                     </ul>
                   </div>
@@ -272,8 +226,9 @@ const Plans = () => {
                         onOpen();
                         setPercent(4);
                         calcPremium(salary, 4);
+                        setPlan("Basic");
                       }}
-                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                      className="text-lg font-medium bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
                       Choose Plan
                     </button>
@@ -281,17 +236,12 @@ const Plans = () => {
                 </div>
               </div>
 
-              <div className="flex-1x hover:lg:w-custom hover:mb-10 hover:lg:px-4 hover:py-10 hover:text-center">
-                <div className="bg-white p-10 rounded-lg shadow-lg">
+              <div className="flex-1x hover:mb-5">
+                <div className="bg-white p-10 rounded-lg shadow">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-2xl font-bold  text-gray-900">
-                        Plus
-                      </h4>
-                      <br />
-                      <h4 className="text-lg font-bold text-gray-900">
-                        6% of monthy income
-                      </h4>{" "}
+                      <h4 className="text-xl font-bold  text-black mb-3">Plus</h4>
+                      <h4 className="text-base font-medium text-black">Premium: 6% of monthly income</h4>{" "}
                     </div>
                   </div>
 
@@ -303,66 +253,49 @@ const Plans = () => {
                         <div className="bg-[#30D158] rounded-full p-1">
                           {/* <AiOutlineCheck size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                         <span className="ml-3 text-base font-medium text-gray-900">
-                          Get paid 65% of your salary in the event of a job loss
+                          Get paid 75% of your salary in the event of a job loss
                         </span>
                       </li>
                       <li className="flex items-center">
                         <div className=" bg-[#30D158] rounded-full p-1">
                           {/* <AiOutlineClose size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
-                        <span className="ml-3 text-base font-medium text-gray-900">
-                          View job vacancies
-                        </span>
+                        <span className="ml-3 text-base font-medium text-gray-900">View job vacancies</span>
                       </li>
                       <li className="flex items-center">
                         <div className="bg-[#30D158] rounded-full p-1">
                           {/* <AiOutlineClose size="1.5em" /> */}
                           <svg
-                                  className="flex-shrink-0 h-4 w-4 text-white"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 24 24"
-                                  stroke="currentColor"
-                                  aria-hidden="true"
-                                >
-                                <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M5 13l4 4L19 7"
-                                />
-                            </svg>
+                            className="flex-shrink-0 h-4 w-4 text-white"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                          </svg>
                         </div>
                         <span className="ml-3 text-base font-medium text-gray-900">
                           Hiring Companies see your resume
@@ -377,8 +310,9 @@ const Plans = () => {
                         onOpen();
                         setPercent(6);
                         calcPremium(salary, 6);
+                        setPlan("Plus");
                       }}
-                      className="text-lg font-bold bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
+                      className="text-lg font-medium bg-white border-2 border-cactus-brown text-cactus-brown hover:bg-cactus-brown hover:text-white w-60 py-3 rounded-lg"
                     >
                       Choose Plan
                     </button>
@@ -392,19 +326,18 @@ const Plans = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader></ModalHeader>
+          <ModalHeader>
+            <h3>Payment Summary ({plan})</h3>
+          </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <h3>
-              <span>{percent}</span>
-              <span>%</span>
+            <h3 className="mb-3">
+              You are about to pay <span className="font-bold">N{premium}</span> as premium for the month.
             </h3>
-            <h3>
-              Salary: <span>{salary}</span>
-            </h3>
-            <h3>
-              Premium: <span>{premium}</span>
-            </h3>
+
+            <p>
+              Note: Your premium is calculated as <span className="font-bold">{percent}%</span> of your salary, <span className="font-bold">N{salary}</span>.
+            </p>
           </ModalBody>
 
           <div className="w-full flex justify-center items-center my-5">
